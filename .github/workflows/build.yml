@@ -86,6 +86,6 @@ jobs:
         if: github.event.inputs.release == 'true'
         with:
           commit: ${{ github.sha }}
-          tag: ${{ env.TAG_ANME }}
+          tag: Padavan-4.4
           artifacts: trunk/images/*.trx
           allowUpdates: true
