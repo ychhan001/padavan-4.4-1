@@ -363,7 +363,7 @@ update_vga_clamp_wl(int first_call)
 void
 update_vga_clamp_rt(int first_call)
 {
-#if defined (USE_WID_2G) && (USE_WID_2G==7602 || USE_WID_2G==7603)
+#if defined (USE_WID_2G) && (USE_WID_2G==7602 || USE_WID_2G==7612)
 	int i_val;
 	const char *wifname;
 
@@ -614,7 +614,7 @@ start_wifi_apcli_wl(int radio_on)
 		wif_control(ifname_apcli, 1);
 		br_add_del_if(IFNAME_BR, ifname_apcli, !is_apcli_wisp_wl() || get_ap_mode());
 		if (nvram_wlan_get_int(1, "sta_auto"))
-#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915 || USE_WID_5G==7612)
+#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915)
 		{
 			doSystem("iwpriv %s set %s=%d", ifname_apcli, "ApCliAutoConnect", 3);
 			logmessage(LOGNAME, "Set ApCliAutoConnect to 3");
@@ -645,7 +645,7 @@ start_wifi_apcli_rt(int radio_on)
 #if !defined(USE_RT3352_MII)
 		br_add_del_if(IFNAME_BR, ifname_apcli, !is_apcli_wisp_rt() || get_ap_mode());
 		if (nvram_wlan_get_int(0, "sta_auto"))
-#if defined (USE_WID_2G) && (USE_WID_2G==7615 || USE_WID_2G==7915 || USE_WID_2G==7603 || USE_WID_2G==7602)
+#if defined (USE_WID_2G) && (USE_WID_2G==7615 || USE_WID_2G==7915)
 		{
 			doSystem("iwpriv %s set %s=%d", ifname_apcli, "ApCliAutoConnect", 3);
 			logmessage(LOGNAME, "Set ApCliAutoConnect to 3");
@@ -689,7 +689,7 @@ reconnect_apcli(const char *ifname_apcli, int force)
 
 	if (get_apcli_sta_auto(is_aband)) {
 		if (is_aband) {
-#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915  || USE_WID_5G==7612)
+#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915)
 			doSystem("iwpriv %s set %s=%d", ifname_apcli, "ApCliAutoConnect", 3);
 			logmessage(LOGNAME, "Set ApCliAutoConnect to 3");
 #else
@@ -697,7 +697,7 @@ reconnect_apcli(const char *ifname_apcli, int force)
 			logmessage(LOGNAME, "Set ApCliAutoConnect to 1");
 #endif
 		} else {
-#if defined (USE_WID_2G) && (USE_WID_2G==7615 || USE_WID_2G==7915 || USE_WID_2G==7603 || USE_WID_2G==7602)
+#if defined (USE_WID_2G) && (USE_WID_2G==7615 || USE_WID_2G==7915)
 			doSystem("iwpriv %s set %s=%d", ifname_apcli, "ApCliAutoConnect", 3);
 			logmessage(LOGNAME, "Set ApCliAutoConnect to 3");
 #else
