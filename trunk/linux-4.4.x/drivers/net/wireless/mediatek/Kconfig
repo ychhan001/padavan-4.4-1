@@ -117,7 +117,7 @@ source "drivers/net/wireless/mediatek/mt76x3/Kconfig"
 endmenu
 endif
 
-if (FIRST_IF_MT7615E || SECOND_IF_MT7615E || FIRST_IF_MT7915)
+if (FIRST_IF_MT7615E || SECOND_IF_MT7615E || FIRST_IF_MT7915 || RT_SECOND_IF_MT7612E || FIRST_IF_MT7603E || RT_FIRST_IF_MT7602E)
 menu "MT7615/MT7915 common configs"
 
 choice
