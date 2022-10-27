@@ -614,7 +614,7 @@ start_wifi_apcli_wl(int radio_on)
 		wif_control(ifname_apcli, 1);
 		br_add_del_if(IFNAME_BR, ifname_apcli, !is_apcli_wisp_wl() || get_ap_mode());
 		if (nvram_wlan_get_int(1, "sta_auto"))
-#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915)
+#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915 || USE_WID_5G==7612)
 		{
 			doSystem("iwpriv %s set %s=%d", ifname_apcli, "ApCliAutoConnect", 3);
 			logmessage(LOGNAME, "Set ApCliAutoConnect to 3");
