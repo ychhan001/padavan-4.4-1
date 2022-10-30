@@ -1,4 +1,4 @@
-name: Build
+name: build
 
 on: 
 #  push:
@@ -56,8 +56,8 @@ on:
         default: 'true'
 jobs:
   build:
-    name: build
-    runs-on: ubuntu-20.04
+    name: ${{ inputs.target }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: hendrikmuhs/ccache-action@v1.2.3
@@ -87,7 +87,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         if: github.event.inputs.release == 'true'
         with:
-          #commit: ${{ github.sha }}
-          tag: Padavan-4.4
+          commit: ${{ github.sha }}
+          tag: Padavan
           artifacts: trunk/images/*.trx
           allowUpdates: true
