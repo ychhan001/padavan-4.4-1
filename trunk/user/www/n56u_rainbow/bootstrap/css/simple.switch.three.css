@@ -1,0 +1,66 @@
+﻿.Switch, .Switch * {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+/* DefaultMin */
+.Switch_DefaultMin {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Switch_DefaultMin .SwitchLine {
+    position: absolute;
+    width: 44px;
+    height: 2px;
+    left: 2px;
+    top: 11px;
+    z-index: 1;
+    background-color: #dadada;
+}
+
+.Switch_DefaultMin .SwitchButton {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background-color: #dadada;
+    border-radius: 24px;
+}
+
+.Switch_DefaultMin.On .SwitchLine {
+    background-color: #00c0ff;
+}
+
+.Switch_DefaultMin.On .SwitchButton {
+    left: 24px;
+    background-color: #00c0ff;
+}
+
+.Switch_DefaultMin.Disabled {
+    opacity: 0.3;
+}
+
+.Switch_DefaultMin.Disabled .SwitchButton {
+    /*opacity:0.5;*/
+}
+
+.Switch_DefaultMin.On.Disabled .SwitchLine {
+    /*opacity:0.5;*/
+}
