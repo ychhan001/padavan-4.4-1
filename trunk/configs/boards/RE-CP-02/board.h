@@ -1,10 +1,10 @@
 #define BOARD_PID "RE-CP-02"
 #define BOARD_NAME "RE-CP-02"
-#define BOARD_DESC "AX1800 Wireless Router"
-#define BOARD_VENDOR_NAME "Ruiji Technology Co., Ltd."
-#define BOARD_VENDOR_URL "https://www.ruiji.com/"
-#define BOARD_MODEL_URL "https://www.ruiji.com/"
-#define BOARD_BOOT_TIME 25
+#define BOARD_DESC "JDCloud RE-CP-02 Wireless Router"
+#define BOARD_VENDOR_NAME "Jingdong Technology Holding Co. Ltd."
+#define BOARD_VENDOR_URL "https://jdbox.jdcloud.com/"
+#define BOARD_MODEL_URL "https://jdbox.jdcloud.com/"
+#define BOARD_BOOT_TIME 30
 #define BOARD_FLASH_TIME 120
 
 #define BOARD_HAS_5G_11AC 1
