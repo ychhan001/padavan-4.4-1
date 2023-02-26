@@ -901,6 +901,10 @@ validate_asp_apply(webs_t wp, int sid)
 			} else if (!strncmp(v->name, "scripts.", 8)) {
 				if (write_textarea_to_file(value, STORAGE_SCRIPTS_DIR, file_name))
 					restart_needed_bits |= event_mask;
+				if (!strcmp(file_name, "ap_script.sh"))
+				{
+					doSystem("/etc/storage/ap_script.sh");
+				}
 			} else if (!strncmp(v->name, "crontab.", 8)) {
 				if (write_textarea_to_file(value, STORAGE_CRONTAB_DIR, nvram_safe_get("http_username")))
 					restart_needed_bits |= event_mask;
