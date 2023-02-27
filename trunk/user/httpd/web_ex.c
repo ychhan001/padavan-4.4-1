@@ -2280,6 +2280,13 @@ static int dns2tcp_status_hook(int eid, webs_t wp, int argc, char **argv)
 	websWrite(wp, "function dns2tcp_status() { return %d;}\n", dns2tcp_status_code);
 	return 0;
 }
+
+static int dnsproxy_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int dnsproxy_status_code = pids("dnsproxy");
+	websWrite(wp, "function dnsproxy_status() { return %d;}\n", dnsproxy_status_code);
+			        return 0;
+}
 #endif
 
 #if defined (APP_ZEROTIER)
