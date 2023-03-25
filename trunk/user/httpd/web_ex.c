@@ -2285,7 +2285,7 @@ static int dnsproxy_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
 	int dnsproxy_status_code = pids("dnsproxy");
 	websWrite(wp, "function dnsproxy_status() { return %d;}\n", dnsproxy_status_code);
-			        return 0;
+	return 0;
 }
 #endif
 
@@ -4539,6 +4539,7 @@ struct ej_handler ej_handlers[] =
 	{ "rules_count", rules_count_hook},
 	{ "pdnsd_status", pdnsd_status_hook},
 	{ "dns2tcp_status", dns2tcp_status_hook},
+	{ "dnsproxy_status", dnsproxy_status_hook},
 #endif
 #if defined (APP_ZEROTIER)
 	{ "zerotier_status", zerotier_status_hook},
