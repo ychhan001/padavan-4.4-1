@@ -142,7 +142,7 @@
                       </div>
                       <div class="row-fluid">
                         <div id="tabMenu" class="submenuBlock"></div>
-                        <div class="alert alert-info" style="margin: 10px;">注意:SQM会自动设置相应的HWNAT规则，请勿自行调整WAN页面的HWNAT选项造成流控失效</br>因7621性能所限,大于500M宽带谨慎开启QOS！</br>通过SQM_QoS您可以：对指定接口流量整形,例如自定义5G访客网络。其他接口如5G主接口不会受到影响。</br>启用流量整形，主动管理队列长度与划分优先级，实现更好的流量体验。</div></div>
+                        <div class="alert alert-info" style="margin: 10px;">因7621性能所限,大于500M宽带开启硬件QOS，并不要手动关闭硬件加速！</div></div>
                       <table width="100%" align="center" cellpadding="4" cellspacing="0" class="table" style="margin-top: 10px;">
                         <tr style="display:none;">
                           <th width="50%">
@@ -168,18 +168,11 @@
                           <th>流控对象</th>
                           <td>
                             <select name="sqm_flag" class="input">
-                              <option value="1" <% nvram_match_x( "", "sqm_flag", "1", "selected"); %>>仅有线</option>
-                              <option value="2" <% nvram_match_x( "", "sqm_flag", "2", "selected"); %>>仅无线</option>
-                              <option value="3" <% nvram_match_x( "", "sqm_flag", "3", "selected"); %>>有线+无线</option>
-                              <option value="4" <% nvram_match_x( "", "sqm_flag", "4", "selected"); %>>自定义接口</option></select>
+                              <option value="3" <% nvram_match_x("", "sqm_flag", "3", "selected"); %>>严格P2P模式</option>
+                              <option value="1" <% nvram_match_x("", "sqm_flag", "1", "selected"); %>>普通模式</option>
+                              <option value="2" <% nvram_match_x("", "sqm_flag", "2", "selected"); %>>取消</option>
+                            </select>
                           </td>
-                        </tr>
-                        <tr>
-                          <th>自定义接口</th>
-                          <td>
-                            <input type="text" maxlength="10" class="input" size="10" name="sqm_active" value="<% nvram_get_x(" ","sqm_active "); %>"/></td>
-                          <td>&nbsp;
-                            <span style="color:#888;">上项菜单需选择“自定义接口“ 可填写例如:ra0</span></td>
                         </tr>
                         <tr>
                           <th>队列规则</th>

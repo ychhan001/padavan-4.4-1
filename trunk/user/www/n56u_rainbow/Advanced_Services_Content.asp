@@ -414,7 +414,6 @@ function on_ttyd_link() {
 																%>
 																	>
 																	<#checkbox_No#>
-																		(*)
 																</option>
 																<option value="1" <% nvram_match_x( "", "http_access", "1", "selected");
 																%>
@@ -422,7 +421,7 @@ function on_ttyd_link() {
 																</option>
 																<option value="2" <% nvram_match_x( "", "http_access", "2", "selected");
 																%>
-																	>Wired and MainAP clients
+																	>Wired and MainAP clients(*)
 																</option>
 															</select>
 														</td>

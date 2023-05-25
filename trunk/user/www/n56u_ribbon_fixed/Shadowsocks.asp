@@ -379,7 +379,7 @@ setTimeout('document.getElementById("btn_ctime").style.display="none";',1000);
 			html += '<br />';
 			html += '<iframe src="https://myip.ipip.net" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>';
 			html += '<br />';
-			html += '<span>国外：<iframe src="https://api.myip.la" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="display:inline;width:50%;position:relative;top:4px;"></iframe></span>';
+			html += '<span>国外 IP：<iframe src="https://api.myip.la" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="display:inline;width:50%;position:relative;top:4px;"></iframe></span>';
 			//html += '<br />';
 			html += '<span><img src="https://www.google.com/favicon.ico?' + new Date().getTime() + '" /></span>';
 			$("ss_status").innerHTML = html;

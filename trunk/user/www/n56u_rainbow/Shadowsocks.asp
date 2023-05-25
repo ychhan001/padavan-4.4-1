@@ -56,8 +56,9 @@
 			init_itoggle('ss_watchcat');
 			init_itoggle('ss_update_chnroute');
 			init_itoggle('ss_update_gfwlist');
+			init_itoggle('ss_adblock');
 			init_itoggle('ss_turn');
-			init_itoggle('socks5_aenable');
+			init_itoggle('socks5_enable');
 			init_itoggle('ss_schedule_enable', change_on);
 			$j("#tab_ss_cfg, #tab_ss_add, #tab_ss_dlink, #tab_ss_ssl, #tab_ss_cli, #tab_ss_log, #tab_ss_help").click(
 				function () {
@@ -2022,12 +2023,12 @@
 														<td colspan="3">
 															<i class="if if-tip-hand-right">
 															</i>
-															<a href="javascript:spoiler_toggle('script19')">
+															<a href="javascript:spoiler_toggle('script7')">
 																<span>
-																	订阅地址(一行一个地址):
+																	点击输入订阅地址(一行一个地址)：
 																</span>
 															</a>
-															<div id="script19">
+															<div id="script7" style="display: none">
 																<textarea rows="8" wrap="off" spellcheck="false"
 																	maxlength="314571" class="span12"
 																	name="scripts.ss_dlink.sh"
@@ -2041,7 +2042,7 @@
 												<table width="100%" cellpadding="4" cellspacing="0" class="table">
 													<tr>
 														<th>
-															关键字过滤（请以/为分隔符）
+															<#Keyword_filter#>
 														</th>
 														<td>
 															<input type="input" name="ss_keyword" id="ss_keyword"
@@ -2052,7 +2053,7 @@
 													</tr>
 													<tr id="ss_schedule_enable_tr" width="50%">
 														<th width="50%">
-															启用定时更新订阅
+															<#ss_schedule_enable_tr#>
 														</th>
 														<td>
 															<input type="checkbox" id="ss_schedule_enable_fake" <%
@@ -2080,35 +2081,35 @@
 													</tr>
 													<tr id="ss_schedule_date_tr">
 														<th>
-															自动更新星期
+															<#ss_schedule_date_tr#>
 														</th>
 														<td>
 															<input type="checkbox" name="ss_date_x_Sun" class="input"
 																onclick="check_Timefield_checkbox();">
-															日
+															<#WF_Sun#>
 															<input type="checkbox" name="ss_date_x_Mon" class="input"
 																onclick="check_Timefield_checkbox();">
-															一
+															<#WF_Mon#>
 															<input type="checkbox" name="ss_date_x_Tue" class="input"
 																onclick="check_Timefield_checkbox();">
-															二
+															<#WF_Tue#>
 															<input type="checkbox" name="ss_date_x_Wed" class="input"
 																onclick="check_Timefield_checkbox();">
-															三
+															<#WF_Wed#>
 															<input type="checkbox" name="ss_date_x_Thu" class="input"
 																onclick="check_Timefield_checkbox();">
-															四
+															<#WF_Thu#>
 															<input type="checkbox" name="ss_date_x_Fri" class="input"
 																onclick="check_Timefield_checkbox();">
-															五
+															<#WF_Fri#>
 															<input type="checkbox" name="ss_date_x_Sat" class="input"
 																onclick="check_Timefield_checkbox();">
-															六
+															<#WF_Sat#>
 														</td>
 													</tr>
 													<tr id="ss_schedule_time_tr">
 														<th>
-															自动更新时间
+															<#ss_schedule_time_tr#>
 														</th>
 														<td>
 															<input type="text" maxlength="2" class="input_3_table"
@@ -2116,13 +2117,13 @@
 																onKeyPress="return validator.isNumber(this,event);"
 																onblur="validator.timeRange(this, 0);" autocorrect="off"
 																autocapitalize="off">
-															时:
+															<#Hour#>:
 															<input type="text" maxlength="2" class="input_3_table"
 																style="width: 30px" name="ss_time_x_min"
 																onKeyPress="return validator.isNumber(this,event);"
 																onblur="validator.timeRange(this, 1);" autocorrect="off"
 																autocapitalize="off">
-															分
+															<#Minute#>
 														</td>
 													</tr>
 													<tr>
@@ -3002,7 +3003,7 @@
 															<center>
 																<input name="button" type="button"
 																	class="btn btn-primary" style="width: 200px"
-																	onclick="applyRule();" value="应用设置" />
+																	onclick="applyRule();" value="<#CTL_apply#>" />
 															</center>
 														</td>
 													</tr>
@@ -3011,9 +3012,33 @@
 											<div id="wnd_ss_cli" style="display:none">
 												<table width="100%" cellpadding="4" cellspacing="0" class="table">
 													<tr>
+														<th width="50%"><#Ad_filter#></th>
+														<td>
+															<input type="checkbox" id="ss_adblock_fake" <% nvram_match_x("", "ss_adblock", "1", "value=1 checked"); %><% nvram_match_x("", "ss_adblock", "0", "value=0"); %>>
+															<div style="position: absolute; margin-left: -10000px;">
+																<input type="radio" value="1" name="ss_adblock" id="ss_adblock_1"<% nvram_match_x("", "ss_adblock", "1", "checked"); %>><#checkbox_Yes#>
+																<input type="radio" value="0" name="ss_adblock" id="ss_adblock_0"<% nvram_match_x("", "ss_adblock", "0", "checked"); %>><#checkbox_No#>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<th width="50%"><#Filter_file#></th>
+														<td>
+															<input type="text" class="input" size="15" name="ss_adblock_url" style="width: 280px"  value="<% nvram_get_x("","ss_adblock_url"); %>" />
+														</td>
+													</tr>
+													<tr>
 														<th colspan="2" style="background-color: #E3E3E3;">
 															Chnroute
 														</th>
+													</tr>
+													<tr>
+														<th width="50%"><#Chnroute#> <#Address#></th>
+														<td>
+															<input type="text" class="input" size="15"
+																name="ss_chnroute_url" style="width: 280px"
+																value="<% nvram_get_x(" "," ss_chnroute_url "); %>" />
+														</td>
 													</tr>
 													<tr>
 														<th width="50%">
@@ -3028,16 +3053,6 @@
 															<input type="button" id="btn_connect_3" class="btn btn-info"
 																value=<#menu5_17_2#>
 															onclick="submitInternet('Update_chnroute');">
-														</td>
-													</tr>
-													<tr>
-														<th width="50%">
-															自定义国内IP更新地址:
-														</th>
-														<td>
-															<input type="text" class="input" size="15"
-																name="ss_chnroute_url" style="width: 200px"
-																value="<% nvram_get_x(" "," ss_chnroute_url "); %>" />
 														</td>
 													</tr>
 													<tr>
@@ -3072,6 +3087,12 @@
 														<th colspan="2" style="background-color: #E3E3E3;">
 															gfwlist
 														</th>
+													</tr>
+													<tr>
+														<th width="50%"><#Gfwlist#> <#Address#></th>
+														<td>
+															<input type="text" class="input" size="15" name="ss_gfwlist_url" style="width: 280px"  value="<% nvram_get_x("","ss_gfwlist_url"); %>" />
+														</td>
 													</tr>
 													<tr>
 														<th width="50%">
@@ -3300,7 +3321,7 @@
 													</tr>
 													<tr>
 														<th colspan="2" style="background-color: #E3E3E3;">
-															进程资源限制说明:</th>
+															进程资源限制说明：此功能底层使用 <a href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cgroups.html">cgroups</a></th>
 													</tr>
 													<tr>
 														<th width="100%">
@@ -3309,8 +3330,6 @@
 													</tr>
 													<tr>
 														<th width="100%">
-															此功能底层使用 <a
-																href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cgroups.html">cgroups</a>,
 															CPU 限制值为一个大于 2 小于 1024 的整数，表示可以使用的 CPU 百分比，如 512 表示 50%;
 															内存限制值需要带上 M 作为单位, 如 20M 表示可以使用 20M 内存，超出会被内核 OOM Killer 自动
 															kill。
@@ -3326,8 +3345,7 @@
 					</div>
 				</div>
 		</form>
-		<div id="footer">
-		</div>
+		<div id="footer"></div>
 	</div>
 	<form method="post" name="Shadowsocks_action" action="">
 		<input type="hidden" name="connect_action" value="">
