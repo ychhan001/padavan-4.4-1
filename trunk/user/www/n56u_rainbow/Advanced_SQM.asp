@@ -201,7 +201,7 @@
                           <td>
                             <input type="text" maxlength="10" class="input" size="10" id="sqm_down_speed" name="sqm_down_speed" value="<% nvram_get_x(" ","sqm_down_speed "); %>"/></td>
                           <td>
-                            <a href="#bw_calc_dialog" class="btn btn-info" data-toggle="modal">速度计算器</a></td>
+                            <a href="#bw_calc_dialog" class="btn btn-info" style="color:#fff" data-toggle="modal">速度计算器</a></td>
                         </tr>
                         <tr>
                           <th width="32%">上传速度 (

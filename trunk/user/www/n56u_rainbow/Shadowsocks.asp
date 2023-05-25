@@ -399,14 +399,10 @@
 				stext = "<#Stopped#>";
 			else if (status_code == 1)
 				stext = "<#Running#>";
-			var html = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' +
-				stext + '</span>';
-			html += '<br />';
-			html += '<iframe src="https://myip.ipip.net" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>';
-			html += '<br />';
-			html += '<span>国外：<iframe src="https://api.myip.la" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="display:inline;width:50%;position:relative;top:4px;"></iframe></span>';
-			html += '<span><img src="https://www.google.com/favicon.ico?' + new Date().getTime() + '" /></span>';
-			$("ss_status").innerHTML = html;
+			$("ss_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
+			$("domestic_ip").innerHTML = '<iframe src="https://myip.ipip.net" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>';
+			$("foreign_ip").innerHTML = '<iframe src="https://api.myip.la" height="30" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="display:inline;width:50%;position:relative;top:4px;"></iframe>';
+			$("gg_status").innerHTML = '<span><img alt="无法访问" src="https://www.google.com/favicon.ico?' + new Date().getTime() + '" /></span>';
 		}
 
 		function fill_dns2tcp_status(status_code) {
@@ -1703,13 +1699,28 @@
 												<table width="100%" cellpadding="4" cellspacing="0" class="table">
 													<tr>
 														<th>
-															客户端
+															<#Client#>
 															<#running_status#>
-															<br />
-															国内和国外的GeoIP和谷歌访问
 														</th>
 														<td id="ss_status">
 														</td>
+													</tr>
+													<tr>
+														<th width="50%">国内IP
+														</th>
+														<td id="domestic_ip"></td>
+													</tr>
+													<tr>
+														<th width="50%">
+															国外IP
+														</th>
+														<td id="foreign_ip"></td>
+													</tr>
+													<tr>
+														<th width="50%">
+															谷歌访问
+														</th>
+														<td id="gg_status"></td>
 													</tr>
 													<tr id="row_pdnsd_run">
 														<th>
