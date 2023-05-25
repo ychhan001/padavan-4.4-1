@@ -4,6 +4,7 @@
 # Copyright (C) 2017 yushi studio <ywb94@qq.com>
 # Copyright (C) 2018 lean <coolsnowwolf@gmail.com>
 # Copyright (C) 2019 chongshengB <bkye@vip.qq.com>
+# Copyright (C) 2022 TurBoTse <860018505@qq.com>
 # Copyright (C) 2023 simonchen
 #
 # This is free software, licensed under the GNU General Public License v3.
@@ -82,6 +83,8 @@ cgroups_init() {
 		mkdir -p /sys/fs/cgroup/memory/$NAME
 		echo $cpu_limit > /sys/fs/cgroup/cpu/$NAME/cpu.shares
 		echo $mem_limit > /sys/fs/cgroup/memory/$NAME/memory.limit_in_bytes
+		limit_bytes="$(cat /sys/fs/cgroup/memory/$NAME/memory.limit_in_bytes)"
+		[ -n "$limit_bytes" ] && export GOMEMLIMIT="$limit_bytes"
 	fi
 }
 
@@ -576,10 +579,10 @@ ssp_close() {
 
 clear_iptable() {
 	s5_port=$(nvram get socks5_port)
-	iptables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT
-	iptables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT
-	ip6tables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT
-	ip6tables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT
+	iptables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT 2>/dev/null
+	iptables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT 2>/dev/null
+	ip6tables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT 2>/dev/null
+	ip6tables -t filter -D INPUT -p tcp --dport $s5_port -j ACCEPT 2>/dev/null
 }
 
 kill_process() {
