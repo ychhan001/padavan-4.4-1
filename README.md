@@ -52,11 +52,14 @@ This project is based on original rt-n56u with latest mtk 4.4.198 kernel, which 
 - EA7500(from https://github.com/MNM28/padavan-4.4, 没有机器测试，自行判断)
 - R6800(from https://github.com/MNM28/padavan-4.4, 没有机器测试，自行判断)
 - TX1801 Plus(from https://github.com/MNM28/padavan-4.4, 没有机器测试，自行判断)
-- RE-CP-02(无线宝鲁班, from https://github.com/240038901/padavan-4.4, 没有机器测试，自行判断)
+- JDCloud RE-CP-02(无线宝鲁班, from https://github.com/240038901/padavan-4.4, 没有机器测试，自行判断)
+- JDCloud RE-SP-01B(from https://github.com/MeIsReallyBa/padavan-4.4, 没有机器测试，自行判断)
 - NEWIFI3(from https://github.com/GH-X/padavan-4.4, 必须拆除主板上编号为C48的电容(位于CPU旁边), 否则外网(WAN)将不能正常工作)
 - MI-R4A(from https://github.com/vipshmily/padavan-4.4, 没有机器测试，自行判断)
 - QM-B1(from https://github.com/monw/padavan, 没有机器测试，自行判断)
 - WE410443-TC(from https://github.com/akw28888/padavan-4.4, 没有机器测试，自行判断)
+- HAR-20S2U1(from https://github.com/vb1980/padavan-4.4, 没有机器测试，自行判断)
+- SIM-AX1800T(from https://github.com/vb1980/padavan-4.4, 自测可用)
 
 # Compilation steps
 
