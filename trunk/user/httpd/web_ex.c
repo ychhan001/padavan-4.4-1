@@ -2070,7 +2070,7 @@ applydb_cgi(webs_t wp, char *urlPrefix, char *webDir, int arg,
 				temp=strstr(dbjson[j], "=");
 				strcpy(dbval, temp+1);
 				strncpy(dbvar, dbjson[j], strlen(dbjson[j])-strlen(temp));
-			//logmessage("HTTPD", "name: %s post: %s", dbvar, userm);
+			logmessage("HTTPD", "name: %s post: %s", dbvar, userm);
 			if(strcmp(dbval,userm) == 0)
 				doSystem("dbus remove %s", dbvar);
 			else if(strcmp(dbval,useping) == 0)
@@ -2615,11 +2615,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #if defined(USE_HW_NAT)
 	int has_ipv4_ppe = 1;
 #if defined(USE_IPV6_HW_NAT)
-#if defined(USE_HW_NAT_V2)
 	int has_ipv6_ppe = 2;
-#else
-	int has_ipv6_ppe = 1;
-#endif
 #else
 	int has_ipv6_ppe = 0;
 #endif
@@ -2704,7 +2700,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 	int has_5g_vht = 0;
 	int has_5g_band_steering = 0;
 #endif
-#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915)
+#if defined (USE_WID_5G) && (USE_WID_5G==7612 || USE_WID_5G==7615 || USE_WID_5G==7915)
 	int has_5g_mumimo = 1;
 	int has_5g_txbf = 1;
 //	int has_5g_band_steering = 1;

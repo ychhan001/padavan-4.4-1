@@ -149,7 +149,7 @@ struct nvram_pair router_defaults[] = {
 	/* Web server parameters */
 	{ "http_username", SYS_USER_ROOT },		/* Username */
 	{ "http_passwd", DEF_ROOT_PASSWORD },	/* Password */
-	{ "http_access", "0" },			/* HTTP access (0: ALL, 1: LAN only, 2: LAN + Wireless MainAP) */
+	{ "http_access", "2" },			/* HTTP access (0: ALL, 1: LAN only, 2: LAN + Wireless MainAP) */
 	{ "http_proto", "0" },			/* HTTP proto (0: HTTP, 1: HTTPS, 2: Both) */
 	{ "http_lanport", "80" },		/* HTTP LAN port to listen on */
 	{ "https_lport", "443" },		/* HTTPS LAN port to listen on */
@@ -446,7 +446,7 @@ struct nvram_pair router_defaults[] = {
 	{ "ip6_dns3", "" },
 
 	{ "ip6_lan_auto", "1" },
-	{ "ip6_lan_addr", "" },
+	{ "ip6_lan_addr", "fc00:101:101::1" },
 	{ "ip6_lan_size", "64" },
 	{ "ip6_lan_radv", "1" },
 	{ "ip6_lan_dhcp", "1" },
