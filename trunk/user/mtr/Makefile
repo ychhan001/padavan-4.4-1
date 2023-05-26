@@ -1,5 +1,5 @@
 #https://github.com/traviscross/mtr
-SRC_NAME = mtr-0.94
+SRC_NAME = mtr-0.95
 THISDIR = $(shell pwd)
 
 all: config_test
@@ -14,7 +14,7 @@ config_test:
 
 configure:
 	( cd $(SRC_NAME) ; \
-	autoreconf -fi ; \
+	./bootstrap.sh ; \
 	./configure \
 		--prefix=/usr \
 		--without-gtk \
