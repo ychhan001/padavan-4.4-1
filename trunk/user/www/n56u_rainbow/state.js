@@ -614,9 +614,6 @@ var tabM7 = [{
 }, {
     "title": "<#menu5_10_3#>",
     "link": "Advanced_InetDetect_Content.asp"
-}, {
-    "title": "<#menu5_22_1#>",
-    "link": "Advanced_web.asp"
 }];
 var tabM8 = [{
         "title": "<#menu5_11#>",
