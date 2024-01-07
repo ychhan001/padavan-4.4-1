@@ -61,6 +61,7 @@ This project is based on original rt-n56u with latest mtk 4.4.198 kernel, which 
 - HAR-20S2U1(from https://github.com/vb1980/padavan-4.4, 没有机器测试，自行判断)
 - SIM-AX1800T(from https://github.com/vb1980/padavan-4.4, 自测可用)
 - G-AX1800(富春江G-AX1800, from https://github.com/ddyjyj/padavan-4.4, 没有机器测试，自行判断)
+- WIA3300-10(西加云杉WIA3300-10，据说和K2P配置差不多，机器买了没到，先适配起来)
 # Compilation steps
 
 - Install dependencies
