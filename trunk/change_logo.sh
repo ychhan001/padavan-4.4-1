@@ -84,6 +84,9 @@ YK-L1 )
 ZTE-E8820S | E8820V2)
 	LOGO=zte.png
 	;;
+WIA3300-10)
+	LOGO=skspruce.png
+	;;
 * )
 	LOGO=asus_logo.png
 	;;
