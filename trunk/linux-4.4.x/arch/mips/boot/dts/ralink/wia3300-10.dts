@@ -17,19 +17,29 @@
 	leds {
 		compatible = "gpio-leds";
 
-		stat_r {
+		sys_red {
+			label = "power_red";
+			gpios = <&gpio0 23 GPIO_ACTIVE_HIGH>;
+		};
+		
+		sys_green {
 			label = "power";
-			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
 		};
 
-		stat_y {
-			label = "wifi";
-			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+		wifi_2g {
+			label = "wifi_2g";
+			gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
 		};
 
-		stat_b {
+		wifi_5g {
+			label = "wifi_5g";
+			gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
+		};
+		
+		wan {
 			label = "wan";
-			gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
 		};
 	};
 
