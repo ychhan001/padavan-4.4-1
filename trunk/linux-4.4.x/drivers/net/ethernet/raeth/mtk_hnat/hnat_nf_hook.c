@@ -455,6 +455,11 @@ unsigned int do_hnat_ge_to_ext(struct sk_buff *skb, const char *func)
 	if (skb->dev) {
 		skb_set_network_header(skb, 0);
 		skb_push(skb, ETH_HLEN);
+		if (skb_hnat_reason(skb) == HIT_BIND_FORCE_TO_CPU) {
+			trace_printk("[%s] reason=0x%x(force to CPU) from WAN to Ext\n",
+				     __func__, skb_hnat_reason(skb));
+			skb->pkt_type = PACKET_HOST;
+		}
 		dev_queue_xmit(skb);
 		trace_printk("%s: called from %s successfully\n", __func__,
 			     func);
