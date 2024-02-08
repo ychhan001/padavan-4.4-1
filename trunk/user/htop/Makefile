@@ -1,4 +1,4 @@
-SRC_NAME = htop-3.2.2
+SRC_NAME = htop-3.3.0
 SRC_URL = http://sources.buildroot.net/htop/$(SRC_NAME).tar.xz
 THISDIR = $(shell pwd)
 
