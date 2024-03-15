@@ -87,6 +87,8 @@ ZTE-E8820S | E8820V2)
 WIA3300-10)
 	LOGO=skspruce.png
 	;;
+G-AX1800)
+	LOGO=fcj.png
 * )
 	LOGO=asus_logo.png
 	;;
