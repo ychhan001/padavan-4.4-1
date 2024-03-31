@@ -53,6 +53,7 @@ configure:
 		--without-gnutls \
 		--without-libidn \
 		--without-libssh2 \
+		--without-libpsl \
 		--without-krb4 \
 		--without-nss \
 		--without-ca-path \
