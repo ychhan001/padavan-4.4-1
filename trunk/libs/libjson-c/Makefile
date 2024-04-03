@@ -1,6 +1,6 @@
-SRC_NAME=json-c-0.16
-SRC_URL=https://s3.amazonaws.com/json-c_releases/releases/json-c-0.16.tar.gz
-ARCHIVE_NAME=json-c-0.16
+SRC_NAME=json-c-0.17
+SRC_URL=https://s3.amazonaws.com/json-c_releases/releases/json-c-0.17.tar.gz
+ARCHIVE_NAME=json-c-0.17
 
 all: download_test extract_test config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)/build
@@ -13,7 +13,7 @@ download_test:
 extract_test:
 	( if [ ! -d $(SRC_NAME) ]; then \
 		tar zxf $(ARCHIVE_NAME).tar.gz; \
-		patch -p1 -d $(SRC_NAME) < json-c-0.16.patch; \
+		patch -p1 -d $(SRC_NAME) < $(SRC_NAME).patch; \
 	fi )
 
 config_test:
