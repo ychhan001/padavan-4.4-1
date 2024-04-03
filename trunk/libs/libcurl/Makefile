@@ -1,5 +1,5 @@
-SRC_NAME=curl-8.6.0
-SRC_URL=https://github.com/curl/curl/releases/download/curl-8_6_0/curl-8.6.0.tar.xz
+SRC_NAME=curl-8.7.1
+SRC_URL=https://github.com/curl/curl/releases/download/curl-8_7_1/curl-8.7.1.tar.xz
 
 LDFLAGS += -Wl,-rpath-link=$(STAGEDIR)/lib
 
@@ -50,6 +50,7 @@ configure:
 		--disable-tls-srp \
 		--disable-libcurl-option \
 		--disable-threaded-resolver \
+		--disable-docs \
 		--without-gnutls \
 		--without-libidn \
 		--without-libssh2 \
