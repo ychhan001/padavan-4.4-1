@@ -47,7 +47,7 @@ index 14b2343d3d..7b30fd4239 100644
 +				file = "Login.asp";
 +				query = NULL;
 +			}
-+			
++
  		}
 -
 -		if (login_state == 2)
