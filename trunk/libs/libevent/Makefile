@@ -1,4 +1,4 @@
-SRC_NAME=libevent-2.1.12-stable
+SRC_NAME=libevent-2.2.1-alpha-dev
 SRC_URL=https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/$(SRC_NAME).tar.gz
 
 all: download_test extract_test config_test
@@ -45,5 +45,5 @@ install:
 	$(MAKE) -C $(SRC_NAME) install DESTDIR=""
 
 romfs:
-	cp -fP $(DESTDIR)/lib/libevent-2.1.so* $(ROMFSDIR)/lib
+	cp -fP $(DESTDIR)/lib/libevent-2.2.so* $(ROMFSDIR)/lib
 
