@@ -1,4 +1,4 @@
-SRC_NAME=parted-3.3
+SRC_NAME=parted-3.6
 SRC_URL=https://ftp.gnu.org/gnu/parted/$(SRC_NAME).tar.xz 
 
 CFLAGS += -ffunction-sections -fdata-sections
@@ -6,19 +6,8 @@ LDFLAGS += -Wl,--gc-sections
 
 THISDIR = $(shell pwd)
 
-all: download_test extract_test config_test
+all: config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
-
-download_test:
-	( if [ ! -f $(SRC_NAME).tar.xz ]; then \
-		wget -t5 --timeout=20 --no-check-certificate -O $(SRC_NAME).tar.xz $(SRC_URL); \
-	fi )
-
-extract_test:
-	( if [ ! -d $(SRC_NAME) ]; then \
-		tar xJf $(SRC_NAME).tar.xz; \
-		patch -d $(SRC_NAME) -p1 -i ../$(SRC_NAME).patch; \
-	fi )
 
 config_test:
 	( if [ -f ./config_done ]; then \
