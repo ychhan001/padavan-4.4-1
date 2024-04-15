@@ -60,9 +60,10 @@ This project is based on original rt-n56u with latest mtk 4.4.198 kernel, which 
 - WE410443-TC(from https://github.com/akw28888/padavan-4.4, 没有机器测试，自行判断)
 - HAR-20S2U1(from https://github.com/vb1980/padavan-4.4, 没有机器测试，自行判断)
 - SIM-AX1800T(from https://github.com/vb1980/padavan-4.4, 自测可用)
-- G-AX1800(富春江G-AX1800, from https://github.com/ddyjyj/padavan-4.4, 没有机器测试，自行判断)
-- WIA3300-10(西加云杉WIA3300-10，据说和K2P配置差不多，机器买了没到，先适配起来)
+- G-AX1800(富春江G-AX1800, from https://github.com/ddyjyj/padavan-4.4, 自测可用)
+- WIA3300-10(西加云杉WIA3300-10，据说和K2P配置差不多，from https://github.com/vb1980/padavan-4.4, 自测可用)
 - JCQ-Q11Pro(from https://github.com/qewwqewq22/padavan11, 没有机器测试，自行判断)
+- R7450(from https://github.com/vipshmily/padavan-4.4, 没有机器测试，自行判断)
 # Compilation steps
 
 - Install dependencies
@@ -76,7 +77,7 @@ This project is based on original rt-n56u with latest mtk 4.4.198 kernel, which 
   **Optional:** install [golang](https://go.dev/doc/install) (and add it to PATH), if you are going to build go programs
 - Clone source code
   ```sh
-  git clone https://github.com/tsl0922/padavan.git
+  git clone https://github.com/vb1980/padavan-4.4.git
   ```
 - Modify template file and start compiling
   ```sh
