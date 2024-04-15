@@ -1,4 +1,4 @@
-SRC_NAME=lzma-4.65
+SRC_NAME=lzma-19.00
 
 all:
 	make -j$(HOST_NCPU) -C $(SRC_NAME)/CPP/7zip/Compress/LZMA_Alone -f makefile.gcc ;\
