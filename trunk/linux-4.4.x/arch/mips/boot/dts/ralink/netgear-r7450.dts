@@ -71,37 +71,37 @@
 
 			partition@0 {
 				label = "Bootloader";
-				reg = <0x0 0x100000>;
+				reg = <0x0 0x100000>;		/* 1m */
 			};
 
 			partition@100000 {
-				label = "SC_PART";
-				reg = <0x100000 0x100000>;
+				label = "BootEnv";
+				reg = <0x100000 0x100000>;		/* 1m */
 			};
 
 			partition@200000 {
 				label = "firmware";
-				reg = <0x200000 0x2c00000>;	
+				reg = <0x200000 0x2c00000>;		/* 44m */
 			};
 
 			partition@4600000 {
 				label = "Factory";
-				reg = <0x4600000 0x200000>;	
+				reg = <0x4600000 0x200000>;		/* 2m */
 			};
 
 			partition@2e00000 {
 				label = "Config";
-				reg = <0x2e00000 0x200000>;	
+				reg = <0x2e00000 0x200000>;		/* 2m */
 			};
 
 			partition@3000000 {
 				label = "Storage";
-				reg = <0x3000000 0x1000000>;
+				reg = <0x3000000 0x2180000>;		/* 34m */
 			};
 
 			partition@5400000 {
 				label = "RWFS";
-				reg = <0x5400000 0x2c00000>;
+				reg = <0x5400000 0x2c00000>;	       /* 44m */
 			};
 
 			partition@all {
