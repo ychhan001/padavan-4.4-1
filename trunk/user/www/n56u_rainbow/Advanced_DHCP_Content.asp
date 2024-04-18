@@ -603,9 +603,7 @@ function changeBgColor(obj, num) {
 													</tr>
 													<tr>
 														<th width="50%">
-															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,5,13);">
-																禁止解析IPv6 DNS记录
-															</a>
+															<#DHCP_Filter_AAAA#>
 														</th>
 														<td>
 															<input type="checkbox" id="dhcp_filter_aaa_fake" <% nvram_match_x( "",
