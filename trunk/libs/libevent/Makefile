@@ -1,5 +1,5 @@
 SRC_NAME=libevent-2.2.1-alpha-dev
-SRC_URL=https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/$(SRC_NAME).tar.gz
+SRC_URL=https://github.com/libevent/libevent/releases/download/release-2.2.1-alpha/$(SRC_NAME).tar.gz
 
 all: download_test extract_test config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
@@ -30,6 +30,7 @@ configure:
 		--disable-static \
 		--enable-shared \
 		--disable-debug-mode \
+		--disable-openssl \
 		--disable-samples \
 		--host=$(HOST_TARGET) \
 		--build=$(HOST_BUILD) ; \
