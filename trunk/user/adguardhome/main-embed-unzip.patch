@@ -1,7 +1,7 @@
 diff --git a/AdGuardHome-0.107.48/main.go b/AdGuardHome-0.107.48/main.go
 index e248ee9..a2c0639 100644
---- a/AdGuardHome-0.107.48/main.go
-+++ b/AdGuardHome-0.107.48/main.go
+--- a/main.go
++++ b/main.go
 @@ -3,7 +3,9 @@
  package main
  
