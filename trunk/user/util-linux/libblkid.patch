@@ -1,23 +1,7 @@
-diff -urN util-linux-2.36-ref/configure.ac util-linux-2.36/configure.ac
---- util-linux-2.36-ref/configure.ac	2020-07-23 12:23:58.000000000 +0300
-+++ util-linux-2.36/configure.ac	2020-07-25 20:31:37.186935818 +0300
-@@ -1234,7 +1234,11 @@
- UL_REQUIRES_BUILD([uuidparse], [libsmartcols])
- AM_CONDITIONAL([BUILD_UUIDPARSE], [test "x$build_uuidparse" = xyes])
- 
--UL_BUILD_INIT([blkid], [check])
-+AC_ARG_ENABLE([blkid],
-+  AS_HELP_STRING([--disable-blkid], [do not build blkid]),
-+  [], [UL_DEFAULT_ENABLE([blkid], [check])]
-+)
-+UL_BUILD_INIT([blkid])
- UL_REQUIRES_BUILD([blkid], [libblkid])
- AM_CONDITIONAL([BUILD_BLKID], [test "x$build_blkid" = xyes])
- 
-diff -urN util-linux-2.36-ref/libblkid/src/Makemodule.am util-linux-2.36/libblkid/src/Makemodule.am
---- util-linux-2.36-ref/libblkid/src/Makemodule.am	2020-07-22 11:06:46.000000000 +0300
-+++ util-linux-2.36/libblkid/src/Makemodule.am	2020-07-25 20:31:37.210935516 +0300
-@@ -26,93 +26,35 @@
+diff -urN util-linux-2.39.3-ref/libblkid/src/Makemodule.am util-linux-2.39.3/libblkid/src/Makemodule.am
+--- util-linux-2.39.3-ref/libblkid/src/Makemodule.am	2023-06-14 12:11:15.547889000 +0300
++++ util-linux-2.39.3/libblkid/src/Makemodule.am	2023-10-18 22:28:00.330587883 +0300
+@@ -26,95 +26,35 @@
  	libblkid/src/verify.c \
  	libblkid/src/version.c \
  	\
@@ -45,6 +29,7 @@ diff -urN util-linux-2.36-ref/libblkid/src/Makemodule.am util-linux-2.36/libblki
  	libblkid/src/superblocks/bitlocker.c \
 -	libblkid/src/superblocks/bluestore.c \
 -	libblkid/src/superblocks/btrfs.c \
+-	libblkid/src/superblocks/cs_fvault2.c \
 -	libblkid/src/superblocks/cramfs.c \
 -	libblkid/src/superblocks/ddf_raid.c \
 -	libblkid/src/superblocks/drbd.c \
@@ -96,6 +81,7 @@ diff -urN util-linux-2.36-ref/libblkid/src/Makemodule.am util-linux-2.36/libblki
  	libblkid/src/superblocks/xfs.c \
  	libblkid/src/superblocks/zfs.c \
 -	libblkid/src/superblocks/zonefs.c \
+-	libblkid/src/superblocks/erofs.c \
  	\
  	libblkid/src/topology/topology.c \
  	libblkid/src/topology/topology.h
@@ -112,10 +98,10 @@ diff -urN util-linux-2.36-ref/libblkid/src/Makemodule.am util-linux-2.36/libblki
  endif
  
  libblkid_la_LIBADD = libcommon.la
-diff -urN util-linux-2.36-ref/libblkid/src/partitions/dos.c util-linux-2.36/libblkid/src/partitions/dos.c
---- util-linux-2.36-ref/libblkid/src/partitions/dos.c	2020-07-01 13:35:59.000000000 +0300
-+++ util-linux-2.36/libblkid/src/partitions/dos.c	2020-07-25 20:31:37.222935366 +0300
-@@ -26,10 +26,7 @@
+diff -urN util-linux-2.39.3-ref/libblkid/src/partitions/dos.c util-linux-2.39.3/libblkid/src/partitions/dos.c
+--- util-linux-2.39.3-ref/libblkid/src/partitions/dos.c	2023-08-17 10:55:57.017839000 +0300
++++ util-linux-2.39.3/libblkid/src/partitions/dos.c	2023-10-18 22:28:00.334587667 +0300
+@@ -28,10 +28,7 @@
  } dos_nested[] = {
  	{ MBR_FREEBSD_PARTITION, &bsd_pt_idinfo },
  	{ MBR_NETBSD_PARTITION, &bsd_pt_idinfo },
@@ -127,9 +113,9 @@ diff -urN util-linux-2.36-ref/libblkid/src/partitions/dos.c util-linux-2.36/libb
  };
  
  static inline int is_extended(struct dos_partition *p)
-diff -urN util-linux-2.36-ref/libblkid/src/partitions/partitions.c util-linux-2.36/libblkid/src/partitions/partitions.c
---- util-linux-2.36-ref/libblkid/src/partitions/partitions.c	2020-07-22 11:06:46.000000000 +0300
-+++ util-linux-2.36/libblkid/src/partitions/partitions.c	2020-07-25 20:31:37.246935064 +0300
+diff -urN util-linux-2.39.3-ref/libblkid/src/partitions/partitions.c util-linux-2.39.3/libblkid/src/partitions/partitions.c
+--- util-linux-2.39.3-ref/libblkid/src/partitions/partitions.c	2023-06-14 12:11:15.552889000 +0300
++++ util-linux-2.39.3/libblkid/src/partitions/partitions.c	2023-10-18 22:28:00.334587667 +0300
 @@ -123,19 +123,11 @@
   */
  static const struct blkid_idinfo *idinfos[] =
@@ -151,13 +137,18 @@ diff -urN util-linux-2.36-ref/libblkid/src/partitions/partitions.c util-linux-2.
  };
  
  /*
-diff -urN util-linux-2.36-ref/libblkid/src/superblocks/superblocks.c util-linux-2.36/libblkid/src/superblocks/superblocks.c
---- util-linux-2.36-ref/libblkid/src/superblocks/superblocks.c	2020-07-22 11:09:40.000000000 +0300
-+++ util-linux-2.36/libblkid/src/superblocks/superblocks.c	2020-07-25 20:31:37.250935014 +0300
-@@ -89,86 +89,20 @@
+diff -urN util-linux-2.39.3-ref/libblkid/src/superblocks/superblocks.c util-linux-2.39.3/libblkid/src/superblocks/superblocks.c
+--- util-linux-2.39.3-ref/libblkid/src/superblocks/superblocks.c	2023-08-17 10:55:57.020839000 +0300
++++ util-linux-2.39.3/libblkid/src/superblocks/superblocks.c	2023-10-18 22:28:00.334587667 +0300
+@@ -94,93 +94,20 @@
   */
  static const struct blkid_idinfo *idinfos[] =
  {
+-	/* In case the volume is locked with OPAL we are going to get
+-	 * an I/O error when reading past the LUKS header, so try it
+-	 * first. */
+-	&luks_idinfo,
+-
 -	/* RAIDs */
 -	&linuxraid_idinfo,
 -	&ddfraid_idinfo,
@@ -173,6 +164,7 @@ diff -urN util-linux-2.36-ref/libblkid/src/superblocks/superblocks.c util-linux-
 -	&jmraid_idinfo,
 -
 -	&bcache_idinfo,
+-	&bcachefs_idinfo,
 -	&bluestore_idinfo,
 -	&drbd_idinfo,
 -	&drbdmanage_idinfo,
@@ -182,12 +174,12 @@ diff -urN util-linux-2.36-ref/libblkid/src/superblocks/superblocks.c util-linux-
 -	&snapcow_idinfo,
 -	&verity_hash_idinfo,
 -	&integrity_idinfo,
--	&luks_idinfo,
 -	&vmfs_volume_idinfo,
 -	&ubi_idinfo,
 -	&vdo_idinfo,
 -	&stratis_idinfo,
 -	&bitlocker_idinfo,
+-	&cs_fvault2_idinfo,
 -
  	/* Filesystems */
  	&vfat_idinfo,
@@ -237,15 +229,16 @@ diff -urN util-linux-2.36-ref/libblkid/src/superblocks/superblocks.c util-linux-
 -	&f2fs_idinfo,
 -	&mpool_idinfo,
 -	&apfs_idinfo,
--	&zonefs_idinfo
+-	&zonefs_idinfo,
+-	&erofs_idinfo,
 +	&exfat_idinfo
  };
  
  /*
-diff -urN util-linux-2.36-ref/libblkid/src/topology/topology.c util-linux-2.36/libblkid/src/topology/topology.c
---- util-linux-2.36-ref/libblkid/src/topology/topology.c	2020-07-22 11:17:44.000000000 +0300
-+++ util-linux-2.36/libblkid/src/topology/topology.c	2020-07-25 20:31:37.250935014 +0300
-@@ -77,11 +77,7 @@
+diff -urN util-linux-2.39.3-ref/libblkid/src/topology/topology.c util-linux-2.39.3/libblkid/src/topology/topology.c
+--- util-linux-2.39.3-ref/libblkid/src/topology/topology.c	2023-08-17 10:56:12.499759000 +0300
++++ util-linux-2.39.3/libblkid/src/topology/topology.c	2023-10-18 22:28:00.334587667 +0300
+@@ -79,10 +79,6 @@
  {
  #ifdef __linux__
  	&sysfs_tp_idinfo,
@@ -257,4 +250,3 @@ diff -urN util-linux-2.36-ref/libblkid/src/topology/topology.c util-linux-2.36/l
 +	&ioctl_tp_idinfo
  #endif
  };
- 

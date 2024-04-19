@@ -1,6 +1,5 @@
-SRC_NAME=util-linux-2.38.1
-SRC_URL=https://www.kernel.org/pub/linux/utils/util-linux/v2.38/$(SRC_NAME).tar.xz
-
+SRC_NAME=util-linux-2.39.3
+SRC_URL=https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/$(SRC_NAME).tar.xz
 THISDIR = $(shell pwd)
 
 CFLAGS += -ffunction-sections -fdata-sections
@@ -18,7 +17,7 @@ download_test:
 extract_test:
 	( if [ ! -d $(SRC_NAME) ]; then \
 		tar xJf $(SRC_NAME).tar.xz; \
-#		patch -d $(SRC_NAME) -p1 -i ../libblkid.patch; \
+		patch -d $(SRC_NAME) -p1 -i ../libblkid.patch; \
 	fi )
 
 config_test:
