@@ -1,6 +1,8 @@
---- a/main.go
-+++ b/main.go
-@@ -1,7 +1,9 @@
+diff --git a/AdGuardHome-0.107.48/main.go b/AdGuardHome-0.107.48/main.go
+index e248ee9..a2c0639 100644
+--- a/AdGuardHome-0.107.48/main.go
++++ b/AdGuardHome-0.107.48/main.go
+@@ -3,7 +3,9 @@
  package main
  
  import (
@@ -8,10 +10,10 @@
 +	"archive/zip"
 +	"bytes"
 +	_ "embed"
- 
- 	"github.com/AdguardTeam/AdGuardHome/internal/home"
- )
-@@ -10,9 +12,14 @@ import (
+ 	// Embed tzdata in binary.
+ 	//
+ 	// See https://github.com/AdguardTeam/AdGuardHome/issues/6758
+@@ -16,9 +18,14 @@ import (
  // internal directory and the embed package is unable to embed files located
  // outside of the same or underlying directory.
  
