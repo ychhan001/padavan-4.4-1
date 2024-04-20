@@ -22,6 +22,7 @@ xray_json_file="/tmp/xray-redir.json"
 trojan_json_file="/tmp/tj-redir.json"
 server_count=0
 redir_tcp=0
+trojan_enable=0
 v2ray_enable=0
 xray_enable=0
 redir_udp=0
@@ -113,6 +114,7 @@ gen_config_file() {
 		sed -i 's/\\//g' $config_file
 		;;
 	trojan)
+		trojan_enable=0
 		if [ "$2" = "0" ]; then
 			lua /etc_ro/ss/gentrojanconfig.lua $1 nat 1080 >$trojan_json_file
 			sed -i 's/\\//g' $trojan_json_file
@@ -155,7 +157,8 @@ get_arg_out() {
 start_rules() {
     log "正在添加防火墙规则..."
 	lua /etc_ro/ss/getconfig.lua $GLOBAL_SERVER > /tmp/server.txt
-	server=`cat /tmp/server.txt` 
+	server=`cat /tmp/server.txt`
+	rm -f /tmp/server.txt
 	cat /etc/storage/ss_ip.sh | grep -v '^!' | grep -v "^$" >$wan_fw_ips
 	cat /etc/storage/ss_wan_ip.sh | grep -v '^!' | grep -v "^$" >$wan_bp_ips
 	#resolve name
@@ -179,7 +182,8 @@ start_rules() {
 	if [ "$UDP_RELAY_SERVER" != "nil" ]; then
 		ARG_UDP="-U"
 		lua /etc_ro/ss/getconfig.lua $UDP_RELAY_SERVER > /tmp/userver.txt
-	    udp_server=`cat /tmp/userver.txt` 
+		udp_server=`cat /tmp/userver.txt`
+		rm -f /tmp/userver.txt
 		udp_local_port="1080"
 	fi
 	if [ -n "$lan_ac_ips" ]; then
@@ -201,7 +205,7 @@ start_rules() {
 	if [ "$lan_con" = "0" ]; then
 		rm -f $lan_fp_ips
 		lancon="all"
-		lancons="全部走代理..."
+		lancons="全部IP走代理..."
 		cat /etc/storage/ss_lan_ip.sh | grep -v '^!' | grep -v "^$" >$lan_fp_ips
 	elif [ "$lan_con" = "1" ]; then
 		rm -f $lan_fp_ips
@@ -544,7 +548,7 @@ ssp_start() {
 	ENABLE_SERVER=$(nvram get global_server)
 	[ "$ENABLE_SERVER" = "nil" ] && return 1
 	log "已启动科学上网..."
-	log "内网控制为: $lancons"
+	log "内网IP控制为: $lancons"
 	nvram set check_mode=0
 	if [ "$pppoemwan" = 0 ]; then
 		/usr/bin/detect.sh
@@ -681,8 +685,8 @@ ressp() {
 	start_watchcat
 	auto_update
 	ENABLE_SERVER=$(nvram get global_server)
-	log "备用服务器启动成功..."
-	log "内网控制为: $lancons"
+	log "备用服务器启动成功！"
+	log "内网IP控制为: $lancons"
 }
 
 check_smsrtdns() {
