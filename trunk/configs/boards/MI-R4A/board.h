@@ -2,10 +2,10 @@
 
 #define BOARD_PID		"MI-R4A"
 #define BOARD_NAME		"MI-R4A"
-#define BOARD_DESC		"Xiaomi Mi R4A Wireless Router"
+#define BOARD_DESC		"Xiaomi Mi R4A Gigabyte Wireless Router"
 #define BOARD_VENDOR_NAME	"Beijing Xiaomi Technology Co., Ltd."
 #define BOARD_VENDOR_URL	"https://www.mi.com/"
-#define BOARD_MODEL_URL		"https://www.mi.com/miwifi4ac"
+#define BOARD_MODEL_URL		"https://www.mi.com/miwifir4a"
 #define BOARD_BOOT_TIME		30
 #define BOARD_FLASH_TIME	120
 

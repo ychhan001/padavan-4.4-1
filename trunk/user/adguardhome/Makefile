@@ -1,4 +1,4 @@
-VERSION := 0.107.43
+VERSION := 0.107.48
 VERSION_PKG := github.com/AdguardTeam/AdGuardHome/internal/version
 
 SRC_NAME := AdGuardHome-$(VERSION)
@@ -21,8 +21,7 @@ extract_test:
 	( if [ ! -d $(SRC_NAME) ]; then \
 		mkdir -p $(SRC_NAME); \
 		tar xf $(SRC_NAME).tar.gz -C $(SRC_NAME) --strip-components=1; \
-		cd $(SRC_NAME); \
-		patch -p1 < ../main-embed-unzip.diff; \
+		patch -d $(SRC_NAME) -p1 -i ../main-embed-unzip.patch; \
 	fi )
 
 build:

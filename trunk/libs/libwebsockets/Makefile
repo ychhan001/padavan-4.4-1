@@ -1,5 +1,5 @@
-SRC_NAME=libwebsockets-4.3.2
-SRC_URL=https://github.com/warmcat/libwebsockets/archive/v4.3.2.tar.gz
+SRC_NAME=libwebsockets-4.3.3
+SRC_URL=https://github.com/warmcat/libwebsockets/archive/v4.3.3.tar.gz
 
 all: download_test extract_test config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)/build
@@ -11,7 +11,7 @@ download_test:
 
 extract_test:
 	( if [ ! -d $(SRC_NAME) ]; then \
-		tar -xf $(SRC_NAME).tar.gz; \
+		tar zxf $(SRC_NAME).tar.gz; \
 		patch -p1 -d $(SRC_NAME) < $(SRC_NAME).patch ; \
 	fi )
 

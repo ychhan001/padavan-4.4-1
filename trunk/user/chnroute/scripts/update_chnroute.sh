@@ -12,7 +12,7 @@ log() {
 
 [ "$1" != "force" ] && [ "$(nvram get ss_update_chnroute)" != "1" ] && exit 0
 
-log "开始更新 CHNRoute..."
+log "CHNRoute 开始更新..."
 [ ! -d /etc/storage/chinadns/ ] && mkdir /etc/storage/chinadns/
 rm -f /tmp/chinadns_chnroute.txt
 
@@ -25,7 +25,6 @@ fi
 
 mv -f /tmp/chinadns_chnroute.txt /etc/storage/chinadns/chnroute.txt
 mtd_storage.sh save >/dev/null 2>&1
-log "CHNRoute 已更新..."
+log "CHNRoute 更新完成！"
 
 [ -f /usr/bin/shadowsocks.sh ] && [ "$(nvram get ss_enable)" = "1" ] && [ "$(nvram get ss_run_mode)" = "router" ] && /usr/bin/shadowsocks.sh restart >/dev/null 2>&1
-

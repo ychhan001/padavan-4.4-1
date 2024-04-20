@@ -17,35 +17,15 @@
 	leds {
 		compatible = "gpio-leds";
 
-		internet {
-			label = "blue:internet";
-			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		stat_r {
+			label = "red";
+			gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 		};
 
-		led_wps: wps {
-			label = "blue:wps";
-			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+		stat_b {
+			label = "blue";
+			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 		};
-	};
-
-	gpio-keys-polled {
-		compatible = "gpio-keys-polled";
-		#address-cells = <1>;
-		#size-cells = <0>;
-		poll-interval = <20>;
-
-		reset {
-			label = "reset";
-			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RESTART>;
-		};
-
-		wps {
-			label = "wps";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_WPS_BUTTON>;
-		};
-
 	};
 };
 

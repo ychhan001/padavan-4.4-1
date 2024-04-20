@@ -1047,7 +1047,7 @@ print_sta_list(webs_t wp, RT_802_11_MAC_TABLE *mp, int num_ss_rx, int ap_idx)
 #endif
 	ret += websWrite(wp, "----------------------------------------\n");
 	ret += websWrite(wp, "%-19s%-8s%-4s%-4s%-4s%-5s%-5s%-7s%-7s%-5s%-4s%-12s\n",
-			   "MAC", "PhyMode", " BW", "MCS", "SGI", "LDPC", "STBC", "TxRate", "RxRate", "RSSI", "PSM", "Connect Time");
+			   "MAC", "PhyMode", "BW", "MCS", "SGI", "LDPC", "STBC", "TxRate", "RxRate", "RSSI", "PSM", "Connect Time");
 
 	for (i = 0; i < mp->Num; i++) {
 		if ((int)mp->Entry[i].ApIdx != ap_idx)
@@ -1072,7 +1072,7 @@ print_sta_list(webs_t wp, RT_802_11_MAC_TABLE *mp, int num_ss_rx, int ap_idx)
 		bzero(&RxRate, sizeof(RxRate));
 		RxRate.word = mp->Entry[i].LastRxRate;
 
-		ret += websWrite(wp, "%02X:%02X:%02X:%02X:%02X:%02X  %-7s %3s %3d %3s %4s %4s %5dM %5dM %4d %3s %02d:%02d:%02d\n",
+		ret += websWrite(wp, "%02X:%02X:%02X:%02X:%02X:%02X %-7s %3s %3d %3s %4s %4s %5dM %5dM %4d %3s %02d:%02d:%02d\n",
 				mp->Entry[i].Addr[0], mp->Entry[i].Addr[1], mp->Entry[i].Addr[2],
 				mp->Entry[i].Addr[3], mp->Entry[i].Addr[4], mp->Entry[i].Addr[5],
 				GetPhyMode(mp->Entry[i].TxRate.field.MODE),
