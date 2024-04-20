@@ -500,7 +500,7 @@ function changeBgColor(obj, num){
                                         <tr>
                                             <th colspan="2" style="background-color: #E3E3E3;"><#t2Advanced#></th>
                                         </tr>
-					<tr>
+										<tr>
                                             <th width="50%"><#DHCP_Filter_AAAA#></th>
                                             <td>
                                                 <div class="main_itoggle">
@@ -515,7 +515,7 @@ function changeBgColor(obj, num){
                                                 </div>
                                             </td>
                                         </tr>
-					<tr>
+										<tr>
                                         
                                         </tr>
                                         <tr>

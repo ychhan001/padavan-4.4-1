@@ -146,13 +146,20 @@ function getHash(){
                             <div class="box well grad_colour_dark_blue">
                                 <h2 class="box_head round_top">SQM QoS - <#menu5_37#></h2>
                                 <div class="round_bottom">
-                                    
+                                    <div>
+                            <ul class="nav nav-tabs" style="margin-bottom: 10px;">
+                                
+                                <li class="active">
+                                    <a href="Advanced_SQM.asp">SQM QOS</a>
+                                </li>
+                            </ul>
+                        </div>
                                     <div class="row-fluid">
                                         <div id="tabMenu" class="submenuBlock"></div>
                                         <div class="alert alert-info" style="margin: 10px;">
-						因7621性能所限,大于500M宽带开启硬件QOS，并不要手动关闭硬件加速！
+											因7621性能所限,大于500M宽带开启硬件QOS，并不要手动关闭硬件加速！
                                         </div>
-                                    </div>
+                                   </div>
 
                                         <table width="100%" align="center" cellpadding="4" cellspacing="0" class="table" style="margin-top: 10px;">
                                             <tr style="display:none;">

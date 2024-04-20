@@ -130,9 +130,9 @@ function done_validating(action) {
 								<div class="span12">
 									<div class="box well grad_colour_dark_blue">
 										<h2 class="box_head round_top">
-											<#menu5_33#>
+											<#menu5_29#>
 												-
-												<#menu5_33_1#>
+												<#menu5_28#>
 										</h2>
 										<div class="round_bottom">
 											<div>
