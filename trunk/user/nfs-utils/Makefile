@@ -1,21 +1,10 @@
-SRC_NAME=nfs-utils-2.6.2
-SRC_URL=https://www.kernel.org/pub/linux/utils/nfs-utils/2.6.2/$(SRC_NAME).tar.xz
+SRC_NAME=nfs-utils-2.6.1
 
 CFLAGS +=$(COPT) -ffunction-sections -fdata-sections -fvisibility=hidden #`pkg-config --cflags uuid`
 LDFLAGS += -Wl,--gc-sections #`pkg-config --libs uuid`
 
-all: download_test extract_test config_test
+all: config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
-
-download_test:
-	( if [ ! -f $(SRC_NAME).tar.xz ]; then \
-		wget -t5 --timeout=20 --no-check-certificate -O $(SRC_NAME).tar.xz $(SRC_URL); \
-	fi )
-
-extract_test:
-	( if [ ! -d $(SRC_NAME) ]; then \
-		tar xJf $(SRC_NAME).tar.xz; \
-	fi )
 
 config_test:
 	( if [ -f ./config_done ]; then \
@@ -55,7 +44,7 @@ clean:
 	rm -f config_done
 
 romfs:
-	$(ROMFSINST) /usr/bin/nfsd.sh
+	$(ROMFSINST) -p +x /usr/bin/nfsd.sh
 	$(ROMFSINST) $(SRC_NAME)/utils/exportfs/exportfs /sbin/exportfs
 	$(ROMFSINST) $(SRC_NAME)/utils/nfsd/nfsd /sbin/rpc.nfsd
 	$(ROMFSINST) $(SRC_NAME)/utils/mountd/mountd /sbin/rpc.mountd
