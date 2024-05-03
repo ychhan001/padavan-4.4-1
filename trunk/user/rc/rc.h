@@ -742,6 +742,7 @@ void ez_event_short(int btn_id);
 void ez_event_long(int btn_id);
 int  is_ntpc_updated(void);
 int  ntpc_updated_main(int argc, char *argv[]);
+int  ntpc_syncnow_main(int argc, char *argv[]);
 int  watchdog_main(int argc, char *argv[]);
 int  start_watchdog(void);
 void notify_watchdog_time(void);
