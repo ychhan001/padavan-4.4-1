@@ -607,6 +607,7 @@
 			{"dhcp_filter_aaaa", "", NULL, EVM_RESTART_DHCPD},
 			{"dhcp_all_servers", "", NULL, EVM_RESTART_DHCPD},
 			{"dhcp_strict_order", "", NULL, EVM_RESTART_DHCPD},
+			{"dhcp_stop_dns_rebind", "", NULL, EVM_RESTART_DHCPD},
 			{"dhcp_static_x", "", NULL, EVM_RESTART_DHCPD},
 			{"dhcp_static_arp", "", NULL, EVM_RESTART_DHCPD},
 			{"dhcp_staticnum_x", "", NULL, EVM_RESTART_DHCPD},

@@ -351,6 +351,10 @@ start_dns_dhcpd(int is_ap_mode)
 		/* Name servers strictly in the order listed */
 		fprintf(fp, "strict-order\n");
 	}
+	if (!is_ap_mode && nvram_match("dhcp_stop_dns_rebind", "1")) {
+		/* Stop DNS rebinding and Allows upstream 127.0.0.0/8 responses */
+		fprintf(fp, "rebind-localhost-ok\n" "stop-dns-rebind\n");
+	}
 	if (!is_ap_mode) {
 		is_dns_used = 1;
 		fprintf(fp, "min-port=%d\n", 4096);

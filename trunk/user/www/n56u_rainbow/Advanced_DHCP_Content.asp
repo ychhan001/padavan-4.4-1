@@ -44,6 +44,7 @@
 			init_itoggle('dhcp_filter_aaaa');
 			init_itoggle('dhcp_all_servers');
 			init_itoggle('dhcp_strict_order');
+			init_itoggle('dhcp_stop_dns_rebind');
 			init_itoggle('dhcp_static_x', change_dhcp_static_enabled);
 			init_itoggle('dhcp_static_arp');
 		});
@@ -79,6 +80,7 @@
 				showhide_div('row_dhcp_filter_aaaa', 0);
 				showhide_div('row_dhcp_all_servers', 0);
 				showhide_div('row_dhcp_strict_order', 0);
+				showhide_div('row_dhcp_stop_dns_rebind', 0);
 				showhide_div('row_dservers', 0);
 				showhide_div('row_hosts', 0);
 			}
@@ -710,6 +712,23 @@
 																	nvram_match_x("", "dhcp_strict_order" , "1" , "checked" ); %> /><#checkbox_Yes#>
 																	<input type="radio" value="0" name="dhcp_strict_order" id="dhcp_strict_order_0" <%
 																		nvram_match_x("", "dhcp_strict_order" , "0" , "checked" ); %> /><#checkbox_No#>
+															</div>
+													</td>
+												</tr>
+												<tr id="row_dhcp_stop_dns_rebind">
+													<th style="border-top: 0 none;"><a class="help_tooltip" href="javascript:void(0);"
+															onmouseover="openTooltip(this,5,16);">
+															<#LANHostConfig_DHCPStopDNSRebind_itemname#>
+														</a></th>
+													<td style="border-top: 0 none;">
+														<input type="checkbox" id="dhcp_stop_dns_rebind_fake" <% nvram_match_x("", "dhcp_stop_dns_rebind" , "1"
+															, "value=1 checked" ); %>
+														<% nvram_match_x("", "dhcp_stop_dns_rebind" , "0" , "value=0" ); %>>
+															<div style="position: absolute; margin-left: -10000px;">
+																<input type="radio" value="1" name="dhcp_stop_dns_rebind" id="dhcp_stop_dns_rebind_1" <%
+																	nvram_match_x("", "dhcp_stop_dns_rebind" , "1" , "checked" ); %> /><#checkbox_Yes#>
+																	<input type="radio" value="0" name="dhcp_stop_dns_rebind" id="dhcp_stop_dns_rebind_0" <%
+																		nvram_match_x("", "dhcp_stop_dns_rebind" , "0" , "checked" ); %> /><#checkbox_No#>
 															</div>
 													</td>
 												</tr>
