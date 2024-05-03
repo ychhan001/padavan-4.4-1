@@ -347,6 +347,10 @@ start_dns_dhcpd(int is_ap_mode)
 		/* DNS queries for all servers */
 		fprintf(fp, "all-servers\n");
 	}
+	if (!is_ap_mode && nvram_match("dhcp_strict_order", "1")) {
+		/* Name servers strictly in the order listed */
+		fprintf(fp, "strict-order\n");
+	}
 	if (!is_ap_mode) {
 		is_dns_used = 1;
 		fprintf(fp, "min-port=%d\n", 4096);

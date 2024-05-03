@@ -878,6 +878,7 @@ struct nvram_pair router_defaults[] = {
 	{ "redirect_all_dns", "0" },		/* Redirect all clients DNS requests */
 	{ "dhcp_filter_aaaa", "0" },
 	{ "dhcp_all_servers", "1" },
+	{ "dhcp_strict_order", "0" },
 	{ "dhcp_verbose", "0" },		/* 0 : quiet, 1: verbose DHCP, 2: verbose DHCPv6, 3: verbose all */
 	{ "dhcp_static_x", "0" },
 	{ "dhcp_static_arp", "0" },
