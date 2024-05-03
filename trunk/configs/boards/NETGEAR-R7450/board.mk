@@ -4,6 +4,6 @@
 # NETGEAR-R7450 # NETGEAR-R7450   # MT7621  #
 ##################################################################
 
-CFLAGS += -DBOARD_R7450
+CFLAGS += -DBOARD_NETGEAR_R7450
 BOARD_NUM_USB_PORTS=2
 CONFIG_BOARD_RAM_SIZE=256

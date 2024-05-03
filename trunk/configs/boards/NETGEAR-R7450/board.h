@@ -1,7 +1,7 @@
 /* NETGEAR-R7450 */
 
-#define BOARD_PID		"R7450"
-#define BOARD_NAME		"R7450"
+#define BOARD_PID		"NETGEAR-R7450"
+#define BOARD_NAME		"NETGEAR-R7450"
 #define BOARD_DESC		"NETGEAR Dual MT7615 Wireless Router"
 #define BOARD_VENDOR_NAME	"NETGEAR Co., Ltd."
 #define BOARD_VENDOR_URL	"http://www.netgear.com/"
