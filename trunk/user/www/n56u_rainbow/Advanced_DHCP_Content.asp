@@ -41,15 +41,14 @@
 			init_itoggle('dhcp_enable_x');
 			init_itoggle('lan_dhcpd_x');
 			init_itoggle('redirect_all_dns');
+			init_itoggle('dhcp_filter_aaaa');
 			init_itoggle('dhcp_static_x', change_dhcp_static_enabled);
 			init_itoggle('dhcp_static_arp');
-			init_itoggle('dhcp_filter_aaa');
 		});
 	</script>
 	<script>
 		var ipmonitor = [ <% get_static_client(); %> ];
-		var wireless = { <% wl_auth_list(); %>
-};
+		var wireless = { <% wl_auth_list(); %> };
 		var m_dhcp = [ <% get_nvram_list("LANHostConfig", "ManualDHCPList"); %> ];
 
 		var mdhcp_ifield = 3;
@@ -75,6 +74,7 @@
 				showhide_div('row_dhcpd_ap', 1);
 				showhide_div('row_domain', 0);
 				showhide_div('row_redirect_all_dns', 0);
+				showhide_div('row_dhcp_filter_aaaa', 0);
 				showhide_div('row_dservers', 0);
 				showhide_div('row_hosts', 0);
 			}
@@ -658,6 +658,24 @@
 															</div>
 													</td>
 												</tr>
+												<tr id="row_dhcp_filter_aaaa">
+													<th style="border-top: 0 none;"><a class="help_tooltip" href="javascript:void(0);"
+															onmouseover="openTooltip(this,5,13);">
+															<#LANHostConfig_DHCPFilterAAAA_itemname#>
+														</a></th>
+													<td style="border-top: 0 none;">
+														<input type="checkbox" id="dhcp_filter_aaaa_fake" <% nvram_match_x("", "dhcp_filter_aaaa" , "1"
+															, "value=1 checked" ); %>
+														<% nvram_match_x("", "dhcp_filter_aaaa" , "0" , "value=0" ); %>>
+															<div style="position: absolute; margin-left: -10000px;">
+																<input type="radio" value="1" name="dhcp_filter_aaaa" id="dhcp_filter_aaaa_1" <%
+																	nvram_match_x("", "dhcp_filter_aaaa" , "1" , "checked" ); %> /><#checkbox_Yes#>
+																	<input type="radio" value="0" name="dhcp_filter_aaaa" id="dhcp_filter_aaaa_0" <%
+																		nvram_match_x("", "dhcp_filter_aaaa" , "0" , "checked" ); %> /><#checkbox_No#>
+															</div>
+													</td>
+												</tr>
+											</table>
 											</table>
 											<table width="100%" align="center" cellpadding="4" cellspacing="0"
 												class="table">
@@ -665,32 +683,6 @@
 													<th colspan="2" style="background-color: #E3E3E3;">
 														<#t2Advanced#>
 													</th>
-												</tr>
-												<tr>
-													<th width="50%">
-														<#DHCP_Filter_AAAA#>
-													</th>
-													<td>
-														<input type="checkbox" id="dhcp_filter_aaa_fake" <%
-															nvram_match_x( "" , "dhcp_filter_aaa" , "1"
-															, "value=1 checked" ); %>
-														<% nvram_match_x( "" , "dhcp_filter_aaa" , "0" , "value=0" ); %>
-															>
-															<div style="position: absolute; margin-left: -10000px;">
-																<input type="radio" value="1" name="dhcp_filter_aaa"
-																	id="dhcp_filter_aaa_1" <% nvram_match_x( ""
-																	, "dhcp_filter_aaa" , "1" , "checked" ); %>
-																/>
-																<#checkbox_Yes#>
-																	<input type="radio" value="0" name="dhcp_filter_aaa"
-																		id="dhcp_filter_aaa_0" <% nvram_match_x( ""
-																		, "dhcp_filter_aaa" , "0" , "checked" ); %>
-																	/>
-																	<#checkbox_No#>
-															</div>
-													</td>
-												</tr>
-												<tr>
 												</tr>
 												<tr>
 													<th width="50%">
