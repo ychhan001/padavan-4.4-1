@@ -343,6 +343,10 @@ start_dns_dhcpd(int is_ap_mode)
 		/* Don't include IPv6 addresses in DNS answers */
 		fprintf(fp, "filter-AAAA\n");
 	}
+	if (!is_ap_mode && nvram_match("dhcp_all_servers", "1")) {
+		/* DNS queries for all servers */
+		fprintf(fp, "all-servers\n");
+	}
 	if (!is_ap_mode) {
 		is_dns_used = 1;
 		fprintf(fp, "min-port=%d\n", 4096);
