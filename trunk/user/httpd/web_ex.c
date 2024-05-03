@@ -2220,7 +2220,7 @@ static int rules_count_hook(int eid, webs_t wp, int argc, char **argv)
 	websWrite(wp, "function chnroute_count() { return '%s';}\n", count);
 #if defined(APP_SHADOWSOCKS)
 	memset(count, 0, sizeof(count));
-	fstream = popen("cat /etc/storage/gfwlist/gfwlist_list.conf |wc -l","r");
+	fstream = popen("cat /etc/storage/gfwlist/gfwlist_list.conf | wc -l", "r");
 	if(fstream) {
 		fgets(count, sizeof(count), fstream);
 		pclose(fstream);
@@ -2531,6 +2531,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_vlmcsd = 0;
 #endif
+#if defined(APP_IPERF3)
+	int found_app_iperf3 = 1;
+#else
+	int found_app_iperf3 = 0;
+#endif
 #if defined(APP_SHADOWSOCKS)
 	int found_app_shadowsocks = 1;
 #else
@@ -2773,6 +2778,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_scutclient() { return %d;}\n"
 		"function found_app_ttyd() { return %d;}\n"
 		"function found_app_vlmcsd() { return %d;}\n"
+		"function found_app_iperf3() { return %d;}\n"
 		"function found_app_dnsforwarder() { return %d;}\n"
 		"function found_app_shadowsocks() { return %d;}\n"
 		"function found_app_sqm() { return %d;}\n"
@@ -2806,6 +2812,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_scutclient,
 		found_app_ttyd,
 		found_app_vlmcsd,
+		found_app_iperf3,
 		found_app_dnsforwarder,
 		found_app_shadowsocks,
 		found_app_sqm,
@@ -3551,6 +3558,7 @@ apply_cgi(const char *url, webs_t wp)
 	{
 		doSystem("sync");
 		doSystem("echo 3 > /proc/sys/vm/drop_caches");
+		websRedirect(wp, current_url);
 		return 0;
 	}
 	else if (!strcmp(value, " RestoreNVRAM "))
@@ -3621,6 +3629,15 @@ apply_cgi(const char *url, webs_t wp)
 		if (get_login_safe())
 			sys_result = doSystem("/usr/bin/https-cert.sh -n '%s' -b %s -d %d", common_name, rsa_bits, days_valid);
 #endif
+		websWrite(wp, "{\"sys_result\": %d}", sys_result);
+		return 0;
+	}
+	else if (!strcmp(value, " NTPSyncNow "))
+	{
+#define NTPC_SYNCNOW_SCRIPT		"/sbin/ntpc_syncnow"
+		int sys_result = 1;
+		if (get_login_safe())
+			sys_result = eval(NTPC_SYNCNOW_SCRIPT);
 		websWrite(wp, "{\"sys_result\": %d}", sys_result);
 		return 0;
 	}

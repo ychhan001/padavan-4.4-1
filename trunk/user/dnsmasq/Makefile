@@ -1,4 +1,4 @@
-SRC_NAME=dnsmasq-2.89
+SRC_NAME=dnsmasq-2.90
 SRC_URL=https://thekelleys.org.uk/dnsmasq/$(SRC_NAME).tar.xz
 THISDIR = $(shell pwd)
 
@@ -23,14 +23,14 @@ download_test:
 
 extract_test:
 	( if [ ! -d $(SRC_NAME) ]; then \
-		tar xf $(SRC_NAME).tar.xz; \
-		patch -d $(SRC_NAME) -p1 -i ../100-remove-old-runtime-kernel-support.patch; \
-		patch -d $(SRC_NAME) -p1 -i ../200-set-MAX_PROCS-to-4-to-reduce-memory-usage.patch; \
+		tar xJf $(SRC_NAME).tar.xz; \
+		find $(THISDIR)/patches -type f -name '*.patch' -print0 \
+		  | sort -z \
+		  | xargs -t -0 -n 1 patch -d $(SRC_NAME)  -p1 -i; \
 	fi )
 
 clean:
 	$(MAKE) -C $(SRC_NAME) clean
-	rm -f dnsmasq
 
 romfs:
 	cp $(SRC_NAME)/src/dnsmasq .

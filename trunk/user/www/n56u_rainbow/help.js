@@ -9,7 +9,8 @@ helpcontent[3] = new Array("");
 helpcontent[4] = new Array("",
 				"<#LANHostConfig_IPRouters_itemdesc#>",
 				"<#LANHostConfig_SubnetMask_itemdesc#>",
-				"<#LANHostConfig_x_Gateway_itemdesc#>");
+				"<#LANHostConfig_x_Gateway_itemdesc#>",
+				"<#LAN_STP_itemdesc#>");
 helpcontent[5] = new Array("",
 				"<#LANHostConfig_DHCPServerConfigurable_itemdesc#>",
 				"<#LANHostConfig_DomainName_itemdesc#> <#LANHostConfig_x_DDNS_alarm_hostname#> <#LANHostConfig_DomainName_itemdesc2#>",
@@ -20,9 +21,16 @@ helpcontent[5] = new Array("",
 				"<#LANHostConfig_x_LDNSServer1_itemdesc#>",
 				"<#LANHostConfig_x_LDNSServer1_itemdesc#>",
 				"<#LANHostConfig_x_LDNSServer1_itemdesc#>",
+				"<#LANHostConfig_x_LDNSServer6_itemdesc#>",
 				"<#LANHostConfig_x_WINSServer_itemdesc#>",
+				"<#LANHostConfig_ForceDNS_itemdesc#>",
+				"<#LANHostConfig_DHCPFilterAAAA_itemdesc#>",
+				"<#LANHostConfig_DHCPAllservers_itemdesc#>",
+				"<#LANHostConfig_DHCPStrictorder_itemdesc#>",
+				"<#LANHostConfig_DHCPStopDNSRebind_itemdesc#>",
+				"<#LANHostConfig_DHCPProxyDNSSEC_itemdesc#>",
 				"<#LANHostConfig_ManualDHCPEnable_itemdesc#>",
-				"<#LANHostConfig_x_LDNSServer6_itemdesc#>");
+				"<#LANHostConfig_ManualARP_itemdesc#>");
 helpcontent[6] = new Array("",
 				"<#RHELP_desc4#>",
 				"<#RHELP_desc5#>",
@@ -165,6 +173,7 @@ helpcontent[22] = new Array("",
 				"<#OP_AP_desc1#>");
 // Tweaks
 helpcontent[23] = new Array("",
+				"<#Adm_Svc_iperf3_desc#>",
 				"<#TweaksWdg_desc#>");
 
 // DDNS

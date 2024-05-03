@@ -354,22 +354,47 @@ void reset_dlink(void){
 #endif
 
 #if defined(APP_VLMCSD)
-void stop_vlmcsd(void){
+int is_vlmcsd_run(void)
+{
+	if (check_if_file_exist("/usr/bin/vlmcsd"))
+	{
+		if (pids("vlmcsd"))
+			return 1;
+	}
+	return 0;
+}
+void stop_vlmcsd(void)
+{
 	eval("/usr/bin/vlmcsd.sh","stop");
 }
-
-void start_vlmcsd(void){
+void start_vlmcsd(void)
+{
 	int vlmcsd_mode = nvram_get_int("vlmcsd_enable");
 	if ( vlmcsd_mode == 1)
 		eval("/usr/bin/vlmcsd.sh","start");
 }
-
-void restart_vlmcsd(void){
+void restart_vlmcsd(void)
+{
 	stop_vlmcsd();
 	start_vlmcsd();
 }
 #endif
+#if defined(APP_IPERF3)
+void stop_iperf3(void){
+	eval("/usr/bin/iperf3.sh","stop");
+}
 
+void start_iperf3(void){
+	int iperf3_mode = nvram_get_int("iperf3_enable");
+	if ( iperf3_mode == 1)
+		eval("/usr/bin/iperf3.sh","start");
+}
+
+void restart_iperf3(void){
+	stop_iperf3();
+	start_iperf3();
+}
+#endif
 #if defined(APP_DNSFORWARDER)
 void stop_dnsforwarder(void){
 	eval("/usr/bin/dns-forwarder.sh","stop");
@@ -774,6 +799,9 @@ doSystem("/usr/sbin/skipd -d /etc/storage/db");
 #if defined(APP_VLMCSD)
 	start_vlmcsd();
 #endif
+#if defined(APP_IPERF3)
+	start_iperf3();
+#endif
 	start_lltd();
 	start_watchdog_cpu();
 	start_crond();
@@ -813,6 +841,12 @@ stop_services(int stopall)
 #endif
 #if defined(APP_MENTOHUST)
 	stop_mentohust();
+#endif
+#if defined(APP_VLMCSD)
+	stop_vlmcsd();
+#endif
+#if defined(APP_IPERF3)
+	stop_iperf3();
 #endif
 #if defined(APP_ADGUARDHOME)
 	stop_adguardhome();
