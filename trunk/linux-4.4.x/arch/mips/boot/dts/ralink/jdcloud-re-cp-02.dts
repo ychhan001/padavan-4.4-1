@@ -16,19 +16,19 @@
 	leds {
 		compatible = "gpio-leds";
 
-		sys_red {
-			label = "power_2";
-			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		stat_r {
+			label = "power";
+			gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
 		};
 
-		sys_green {
-			label = "power_3";
+		stat_b {
+			label = "wifi";
 			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 		};
 
-		sys_blue {
-			label = "power";
-			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+		stat_g {
+			label = "wan";
+			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -46,10 +46,14 @@
 
 		wps {
 			label = "wps";
-			gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_WPS_BUTTON>;
 		};
 	};
+};
+
+&bch {
+	status = "okay";
 };
 
 &spi0 {
@@ -60,44 +64,47 @@
 		#size-cells = <1>;
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <10000000>;
+		spi-max-frequency = <25000000>;
+		m25p,fast-read;
 
-		partition@0 {
-			label = "Bootloader";
-			reg = <0x00000 0x40000>;
-		};
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
 
-		partition@40000 {
-			label = "Config";
-			reg = <0x40000 0x10000>;
-		};
+			partition@0 {
+				label = "Bootloader";
+				reg = <0x00 0x30000>;
+			};
 
-		partition@50000 {
-			label = "Factory";
-			reg = <0x50000 0x40000>;
-		};
+			partition@30000 {
+				label = "Config";
+				reg = <0x30000 0x10000>;
+			};
 
-		partition@90000 {
-			label = "firmware";
-			reg = <0x90000 0xef0000>;
-		};
+			partition@40000 {
+				label = "Factory";
+				reg = <0x40000 0x10000>;
+			};
 
-		partition@f80000 {
-			label = "Storage";
-			reg = <0xf80000 0x80000>;
-		};
+			partition@50000 {
+   				label = "firmware";
+   				reg = <0x50000 0xf30000>;
+   			};
 
-		partition@all {
-			label = "ALL";
-			reg = <0x0 0x1000000>;
+  			partition@f80000 {
+     				label = "Storage";
+     				reg = <0xf80000 0x80000>; /* 512K */
+     			};
+			
+			partition@all {
+				label = "ALL";
+				reg = <0x0 0x1000000>;
+			};
 		};
 	};
 };
 
 &pcie {
-	status = "okay";
-};
-
-&sdhci {
 	status = "okay";
 };
