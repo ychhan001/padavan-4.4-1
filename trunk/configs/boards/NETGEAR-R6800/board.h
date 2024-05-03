@@ -1,4 +1,4 @@
-/* R6800 */
+/* NETGEAR-R6800 */
 
 #define BOARD_PID		"NETGEAR-R6800"
 #define BOARD_NAME		"NETGEAR-R6800"
