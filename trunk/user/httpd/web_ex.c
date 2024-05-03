@@ -2220,7 +2220,7 @@ static int rules_count_hook(int eid, webs_t wp, int argc, char **argv)
 	websWrite(wp, "function chnroute_count() { return '%s';}\n", count);
 #if defined(APP_SHADOWSOCKS)
 	memset(count, 0, sizeof(count));
-	fstream = popen("cat /etc/storage/gfwlist/gfwlist_list.conf |wc -l","r");
+	fstream = popen("cat /etc/storage/gfwlist/gfwlist_list.conf | wc -l", "r");
 	if(fstream) {
 		fgets(count, sizeof(count), fstream);
 		pclose(fstream);
@@ -3558,6 +3558,7 @@ apply_cgi(const char *url, webs_t wp)
 	{
 		doSystem("sync");
 		doSystem("echo 3 > /proc/sys/vm/drop_caches");
+		websRedirect(wp, current_url);
 		return 0;
 	}
 	else if (!strcmp(value, " RestoreNVRAM "))
