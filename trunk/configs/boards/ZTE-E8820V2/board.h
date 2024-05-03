@@ -1,9 +1,9 @@
 /* ZTE E8820V2 */
 
-#define BOARD_PID		"E8820V2"
-#define BOARD_NAME		"E8820V2"
+#define BOARD_PID		"ZTE-E8820V2"
+#define BOARD_NAME		"ZTE-E8820V2"
 #define BOARD_DESC		"ZTE E8820V2 Wireless Router"
-#define BOARD_VENDOR_NAME	"ZTE Corporation"
+#define BOARD_VENDOR_NAME	"ZTE Technology"
 #define BOARD_VENDOR_URL	"http://www.ztehome.com.cn/"
 #define BOARD_MODEL_URL		"http://www.ztehome.com.cn/"
 #define BOARD_BOOT_TIME		30
