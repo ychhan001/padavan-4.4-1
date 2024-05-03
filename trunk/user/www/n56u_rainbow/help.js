@@ -165,6 +165,7 @@ helpcontent[22] = new Array("",
 				"<#OP_AP_desc1#>");
 // Tweaks
 helpcontent[23] = new Array("",
+				"<#Adm_Svc_iperf3_desc#>",
 				"<#TweaksWdg_desc#>");
 
 // DDNS

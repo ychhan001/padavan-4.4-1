@@ -42,13 +42,14 @@ $j(document).ready(function() {
     init_itoggle('crond_enable', change_crond_enabled);
     init_itoggle('ttyd_enable', change_ttyd_enabled);
     init_itoggle('vlmcsd_enable');
+	init_itoggle('iperf3_enable');
     init_itoggle('watchdog_cpu');
 });
 		</script>
 		<script>
 			<% login_state_hook(); %>
 <% openssl_util_hook(); %>
-var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr_t"); %>';
+var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
 var http_proto = '<% nvram_get_x("", "http_proto"); %>';
 var http_port = '<% nvram_get_x("", "http_lanport"); %>';
 var https_port = '<% nvram_get_x("", "https_lport"); %>';
@@ -98,6 +99,9 @@ function initial() {
     if (!found_app_vlmcsd()) {
         showhide_div('div_vlmcsd', 0);
     }
+	if(!found_app_iperf3()){
+		showhide_div('row_iperf3', 0);
+	}
 	
 }
 
@@ -728,7 +732,7 @@ function on_ttyd_link() {
 														</th>
 													</tr>
 													<tr id="div_vlmcsd">
-														<th>
+														<th width="50%">
 															<#Adm_Svc_vlmcsd#>
 														</th>
 														<td>
@@ -745,6 +749,21 @@ function on_ttyd_link() {
 																		value="0" <% nvram_match_x( "", "vlmcsd_enable", "0", "checked"); %>
 																		/>
 																		<#checkbox_No#>
+																</div>
+														</td>
+													</tr>
+													<tr id="row_iperf3">
+														<th width="50%"><a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,23,1);">
+																<#Adm_Svc_iperf3#>
+															</a></th>
+														<td>
+															<input type="checkbox" id="iperf3_enable_fake" <% nvram_match_x("", "iperf3_enable" , "1" , "value=1 checked" ); %>
+															<% nvram_match_x("", "iperf3_enable" , "0" , "value=0" ); %>>			
+																<div style="position: absolute; margin-left: -10000px;">
+																	<input type="radio" name="iperf3_enable" id="iperf3_enable_1" class="input" value="1" <%
+																		nvram_match_x("", "iperf3_enable" , "1" , "checked" ); %>/><#checkbox_Yes#>
+																		<input type="radio" name="iperf3_enable" id="iperf3_enable_0" class="input" value="0" <%
+																			nvram_match_x("", "iperf3_enable" , "0" , "checked" ); %>/><#checkbox_No#>
 																</div>
 														</td>
 													</tr>
@@ -828,7 +847,7 @@ function on_ttyd_link() {
 													</tr>
 													<tr>
 														<th width="50%">
-															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,23,1);">
+															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,23,2);">
 																<#TweaksWdg#>
 															</a>
 														</th>
