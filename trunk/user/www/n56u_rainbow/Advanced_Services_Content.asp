@@ -600,12 +600,11 @@ var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
 																, "selected" ); %>
 																>
 																<#checkbox_No#>
-																	(*)
 															</option>
 															<option value="1" <% nvram_match_x( "" , "sshd_enable" , "1"
 																, "selected" ); %>
 																>
-																<#checkbox_Yes#>
+																<#checkbox_Yes#> (*)
 															</option>
 															<option value="2" <% nvram_match_x( "" , "sshd_enable" , "2"
 																, "selected" ); %>
@@ -715,7 +714,9 @@ var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
 												</tr>
 												<tr id="div_ttyd">
 													<th width="50%">
-														<#Adm_Svc_ttyd_enable#>
+														<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,23,4);">
+                                                            <#Adm_Svc_ttyd_enable#>
+                                                        </a>
 													</th>
 													<td colspan="2">
 														<input type="checkbox" id="ttyd_enable_fake" <%
@@ -910,7 +911,7 @@ var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
 												<tr>
 													<th width="50%">
 														<a class="help_tooltip" href="javascript:void(0);"
-															onmouseover="openTooltip(this,23,2);">
+															onmouseover="openTooltip(this,23,1);">
 															<#TweaksWdg#>
 														</a>
 													</th>

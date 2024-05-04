@@ -932,10 +932,11 @@
                                                     <td>
                                                         <select name="log_float_ui" class="input">
                                                             <option value="0" <% nvram_match_x("", "log_float_ui" , "0"
-                                                                ,"selected"); %>><#checkbox_No#>
+                                                                ,"selected"); %>><#checkbox_No#> (*)
                                                             </option>
                                                             <option value="1" <% nvram_match_x("", "log_float_ui" , "1"
-                                                                ,"selected"); %>><#checkbox_Yes#> (*)</option>
+                                                                ,"selected"); %>><#checkbox_Yes#>
+                                                            </option>
                                                             <option value="2" <% nvram_match_x("", "log_float_ui" , "2"
                                                                 ,"selected"); %>><#Adm_System_logf_item2#>
                                                             </option>

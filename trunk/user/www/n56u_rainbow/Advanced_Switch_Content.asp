@@ -35,14 +35,15 @@
 
 		$j(document).ready(function () {
 			init_itoggle('ether_green');
+			init_itoggle('ether_eee');
 		});
 	</script>
 	<script>
-			<% lanlink(); %>
+		<% lanlink(); %>
 
-<% hardware_pins(); %>
+		<% hardware_pins(); %>
 
-var id_update_status = 0;
+		var id_update_status = 0;
 
 		function initial() {
 			var id_menu = 5;
@@ -307,6 +308,29 @@ var id_update_status = 0;
 																		, "checked" ); %>
 																	/>
 																	<#checkbox_No#>
+															</div>
+													</td>
+												</tr>
+												<tr>
+													<th width="50%">
+														<#btn_Enable#>
+															<#SwitchEEE#>
+													</th>
+													<td>
+														<input type="checkbox" id="ether_eee_fake" <%
+															nvram_match_x("", "ether_eee" , "1" , "value=1 checked" );
+															%>
+														<% nvram_match_x("", "ether_eee" , "0" , "value=0" ); %>>
+
+															<div style="position: absolute; margin-left: -10000px;">
+																<input type="radio" value="1" name="ether_eee"
+																	id="ether_eee_1" class="input" <%
+																	nvram_match_x("", "ether_eee" , "1" , "checked" );
+																	%> /><#checkbox_Yes#>
+																	<input type="radio" value="0" name="ether_eee"
+																		id="ether_eee_0" class="input" <%
+																		nvram_match_x("", "ether_eee" , "0" , "checked"
+																		); %> /><#checkbox_No#>
 															</div>
 													</td>
 												</tr>

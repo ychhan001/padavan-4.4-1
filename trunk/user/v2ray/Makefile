@@ -1,4 +1,4 @@
-V2RAY_VERSION := 5.15.3
+V2RAY_VERSION := 5.16.1
 V2RAY_URL := https://codeload.github.com/v2fly/v2ray-core/tar.gz/v$(V2RAY_VERSION)
 V2RAY_DIR = "v2ray-core/core/main"
 

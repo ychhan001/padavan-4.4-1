@@ -529,9 +529,9 @@ var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
                                                         <select name="sshd_enable" class="input"
                                                             onchange="sshd_auth_change();">
                                                             <option value="0" <% nvram_match_x("", "sshd_enable" , "0"
-                                                                ,"selected"); %>><#checkbox_No#> (*)</option>
+                                                                ,"selected"); %>><#checkbox_No#></option>
                                                             <option value="1" <% nvram_match_x("", "sshd_enable" , "1"
-                                                                ,"selected"); %>><#checkbox_Yes#>
+                                                                ,"selected"); %>><#checkbox_Yes#> (*)
                                                             </option>
                                                             <option value="2" <% nvram_match_x("", "sshd_enable" , "2"
                                                                 ,"selected"); %>><#checkbox_Yes#> (authorized_keys only)
@@ -629,7 +629,9 @@ var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
                                                 </tr>
                                                 <tr id="div_ttyd">
                                                     <th width="50%">
-                                                        <#Adm_Svc_ttyd_enable#>
+                                                        <a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,23,4);">
+                                                            <#Adm_Svc_ttyd_enable#>
+                                                        </a>
                                                     </th>
                                                     <td colspan="2">
                                                         <div class="main_itoggle">
@@ -823,7 +825,7 @@ var lan_ipaddr = '<% nvram_get_x("", "lan_ipaddr"); %>';
                                                 </tr>
                                                 <tr>
                                                     <th width="50%"><a class="help_tooltip" href="javascript:void(0);"
-                                                            onmouseover="openTooltip(this,23,2);">
+                                                            onmouseover="openTooltip(this,23,1);">
                                                             <#TweaksWdg#>
                                                         </a></th>
                                                     <td>
