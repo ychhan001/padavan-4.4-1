@@ -54,11 +54,11 @@ struct nvram_pair router_defaults[] = {
 	{ "lan_ipaddr", DEF_LAN_ADDR },	/* LAN IP address */
 	{ "lan_netmask", DEF_LAN_MASK },/* LAN netmask */
 	{ "lan_gateway", DEF_LAN_ADDR },/* LAN gateway */
-	{ "lan_dns_x", "1" },		/* LAN DNS [static|dhcp] */
-	{ "lan_dns1", "" },			/* LAN DNS1 */
-	{ "lan_dns2", "" },			/* LAN DNS2 */
-	{ "lan_domain", "lan" },	/* LAN domain name */
-	{ "lan_stp", "1" },			/* LAN spanning tree protocol */
+	{ "lan_dns_x", "1" },			/* LAN DNS [static|dhcp] */
+	{ "lan_dns1", "" },				/* LAN DNS1 */
+	{ "lan_dns2", "" },				/* LAN DNS2 */
+	{ "lan_domain", "lan" },		/* LAN domain name */
+	{ "lan_stp", "1" },				/* LAN spanning tree protocol */
 
 	/* WAN H/W parameters */
 	{ "wan_ifname", IFNAME_WAN },	/* WAN interface name */
@@ -73,8 +73,8 @@ struct nvram_pair router_defaults[] = {
 	{ "wan_dns1_x", "" },
 	{ "wan_dns2_x", "" },
 	{ "wan_dns3_x", "" },
-	{ "wan_hostname", "" },		/* WAN hostname */
-	{ "wan_vci", "" },			/* WAN vendor class identifier (OPT-60) */
+	{ "wan_hostname", "" },			/* WAN hostname */
+	{ "wan_vci", "" },				/* WAN vendor class identifier (OPT-60) */
 	{ "wan_ttl_fix", "0" },
 	{ "wan_ttl_value", "0" },
 	{ "wan_hwaddr_x", "" },
@@ -154,7 +154,7 @@ struct nvram_pair router_defaults[] = {
 	{ "http_lanport", "80" },		/* HTTP LAN port to listen on */
 	{ "https_lport", "443" },		/* HTTPS LAN port to listen on */
 	{ "https_clist", DEF_HTTPS_CIPH_LIST },	/* HTTPS SSL cipher list */
-	{ "fw_dos_x", "0" },			// oleg patch
+	{ "fw_dos_x", "0" },			/* DoS Attacks Protection */
 	{ "dr_enable_x", "1" },			// oleg patch
 	{ "mr_enable_x", "1" },			// oleg patch
 	{ "mr_qleave_x", "1" },
@@ -210,7 +210,7 @@ struct nvram_pair router_defaults[] = {
 #endif
 	{ "wl_txbf", "1" },
 	{ "wl_ssid2",  DEF_WLAN_5G_SSID },
-	{ "wl_mode_x", "0" },		/* 5GHz Wireless Bridge Mode */
+	{ "wl_mode_x", "0" },				/* 5GHz Wireless Bridge Mode */
 	{ "wl_wdsapply_x", "0" },
 	{ "wl_wdsnum_x", "0" },
 	{ "wl_wep_x", "0" },
@@ -225,7 +225,7 @@ struct nvram_pair router_defaults[] = {
 	{ "wl_stream_tx", STR(BOARD_NUM_ANT_5G_TX) },
 	{ "wl_stream_rx", STR(BOARD_NUM_ANT_5G_RX) },
 	{ "wl_preamble", "1" },
-	{ "wl_greenap", "0" },		/* 5GHz GreenAP */
+	{ "wl_greenap", "0" },				/* 5GHz GreenAP */
 	{ "wl_ldpc", "3" },
 	{ "wl_HT_RDG", "0" },
 #if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915)
@@ -317,7 +317,7 @@ struct nvram_pair router_defaults[] = {
 	{ "rt_radius_key", "" },
 	{ "rt_radio_x", "1" },
 	{ "rt_ssid2", DEF_WLAN_2G_SSID },
-	{ "rt_mode_x", "0" },		/* 2.4GHz Wireless Bridge Mode */
+	{ "rt_mode_x", "0" },			/* 2.4GHz Wireless Bridge Mode */
 	{ "rt_wdsapply_x", "0" },
 	{ "rt_wdsnum_x", "0" },
 	{ "rt_wep_x", "0" },
@@ -332,7 +332,7 @@ struct nvram_pair router_defaults[] = {
 	{ "rt_stream_tx", STR(BOARD_NUM_ANT_2G_TX) },
 	{ "rt_stream_rx", STR(BOARD_NUM_ANT_2G_RX) },
 	{ "rt_preamble", "1" },
-	{ "rt_greenap", "0" },		/* 2.4GHz GreenAP */
+	{ "rt_greenap", "0" },			/* 2.4GHz GreenAP */
 	{ "rt_HT_RDG", "0" },
 	{ "rt_HT_AMSDU", "1" },
 	{ "rt_HT_80211KV", "0" },
@@ -455,7 +455,7 @@ struct nvram_pair router_defaults[] = {
 	{ "ip6_lan_sfpe", "4352" }, // 0x1100
 
 	{ "upnp_enable_x", "1" },
-	{ "upnp_proto", "2" },
+	{ "upnp_proto", "0" },
 	{ "upnp_secure", "1" },
 	{ "upnp_clean_min", "10" },
 	{ "upnp_clean_int", "600" },
@@ -554,6 +554,7 @@ struct nvram_pair router_defaults[] = {
 	/* vlmcsd */
 	{ "vlmcsd_enable", "0" },
 #endif
+
 #if defined (APP_IPERF3)
 	/* iperf3 */
 	{ "iperf3_enable", "0" },
@@ -751,7 +752,7 @@ struct nvram_pair router_defaults[] = {
 	{ "sdns_cache_persist", "1" },
 	{ "sdns_tcp_idle_time","120"},
 	{ "sdns_rr_ttl", "300" },
-	{ "sdns_rr_ttl_min", "600" },
+	{ "sdns_rr_ttl_min", "60" },
 	{ "sdns_rr_ttl_max", "3600" },
 	{ "sdns_rr_ttl_reply_max", "60" },
 	{ "sdns_max_reply_ip_num", "3" },
@@ -1018,11 +1019,8 @@ struct nvram_pair router_defaults[] = {
 	{ "ether_uport", "0" },		/* WAN port in AP mode is static upstream by default */
 	{ "ether_m2u", "2" },
 	{ "ether_green", "1" },
-#if defined(USE_RTL8367)
+	{ "ether_eee", "0" },
 	{ "ether_jumbo", "1" },
-#else
-	{ "ether_jumbo", "0" },
-#endif
 #if (BOARD_NUM_ETH_LEDS > 1)
 	{ "ether_led0", "3" },
 #else

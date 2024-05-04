@@ -462,7 +462,7 @@ function show_banner(L3) {
     bc += '  </tr>\n';
     bc += '  <tr>\n';
     bc += '    <td><button type="button" id="commit_btn" class="btn btn-mini" style="width: 114px; height: 21px; outline:0; ' + enabledBtnCommit + '" onclick="commit();"><#CTL_Commit#></button></td>\n';
-    bc += '    <td><button type="button" id="cleanupmemo_btn" class="btn btn-mini" style="height: 21px; outline:0;margin-right:3px" title="<#BTN_FREEMEMORY#>" onclick="cleanupMemo();"><i class="if if-banner-cleanmemo"></i></button><button type="button" id="logout_btn" class="btn btn-mini" style="height: 21px; outline:0;" title="<#t1Logout#>" onclick="logout();"><i class="if if-banner-signout"></i></button><button type="button" id="reboto_btn" class="btn btn-mini" style="height: 21px; outline:0;" title="<#BTN_REBOOT#>" onclick="reboot();"><i class="if if-banner-restart"></i></button><div class="btn-group theme pull-left"><button type="button" class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><i class="if if-banner-theme"></i></button><ul class="dropdown-menu" role="menu"><li class="red"><a href="#"></a></li><li class="orange"><a href="#"></a></li><li class="yellow"><a href="#"></a></li><li class="green"><a href="#"></a></li><li class="cyan"><a href="#"></a></li><li class="blue"><a href="#"></a></li><li class="purple"><a href="#"></a></li></ul></div></td>\n';
+    bc += '    <td><button type="button" id="cleanupmemo_btn" class="btn btn-mini" style="height: 21px; outline:0;margin-right:3px" title="<#BTN_FREEMEMORY#>" onclick="cleanupMemo();"><i class="if if-banner-cleanmemo"></i></button><button type="button" id="logout_btn" class="btn btn-mini" style="height: 21px; outline:0;" title="<#t1Logout#>" onclick="logout();"><i class="if if-banner-signout"></i></button><button type="button" id="reboto_btn" class="btn btn-mini" style="height: 21px; outline:0;" title="<#BTN_REBOOT#>" onclick="reboot();"><i class="if if-banner-restart"></i></button><button type="button" id="shutdown_btn" class="btn btn-mini" style="height: 21px; outline:0;" title="<#BTN_SHUTDOWN#>" onclick="shutdown();"><i class="if if-banner-poweroff"></i></button><div class="btn-group theme pull-left"><button type="button" class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><i class="if if-banner-theme"></i></button><ul class="dropdown-menu" role="menu"><li class="red"><a href="#"></a></li><li class="orange"><a href="#"></a></li><li class="yellow"><a href="#"></a></li><li class="green"><a href="#"></a></li><li class="cyan"><a href="#"></a></li><li class="blue"><a href="#"></a></li><li class="purple"><a href="#"></a></li></ul></div></td>\n';
     bc += '  </tr>\n';
     bc += '</table>\n';
     bc += '</div>\n';
@@ -1300,7 +1300,7 @@ function reboot() {
     });
 }
 
-/*function shutdown() {
+function shutdown() {
     if (!confirm('<#JS_shutdown#>'))
         return;
     var $j = jQuery.noConflict();
@@ -1308,7 +1308,7 @@ function reboot() {
         'action_mode': ' Shutdown ',
         'current_page': 'Main_LogStatus_Content.asp'
     });
-}*/
+}
 
 function cleanupMemo() {
     var $j = jQuery.noConflict();
