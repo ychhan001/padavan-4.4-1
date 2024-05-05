@@ -261,7 +261,7 @@ fill_dnsmasq_servers(void)
 	}
 
 	/* fill from user dnsmasq.servers */
-	//load_user_config(fp, storage_dir, "dnsmasq.servers", NULL);
+	load_user_config(fp, storage_dir, "dnsmasq.servers", NULL);
 
 	fclose(fp);
 

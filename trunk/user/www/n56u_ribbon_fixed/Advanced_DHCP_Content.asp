@@ -76,6 +76,7 @@
                 showhide_div('row_dhcp_stop_dns_rebind', 0);
                 showhide_div('row_dhcp_proxy_dnssec', 0);
                 showhide_div('row_dservers', 0);
+                showhide_div('row_dhcpconf', 0);
                 showhide_div('row_hosts', 0);
             }
 
@@ -810,7 +811,7 @@
                                                             </span></a>
                                                         <div id="spoiler_conf" style="display:none;">
                                                             <textarea rows="16" wrap="off" spellcheck="false"
-                                                                maxlength="16384" class="span12"
+                                                                maxlength="4096" class="span12"
                                                                 name="dnsmasq.dnsmasq.conf"
                                                                 style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("dnsmasq.dnsmasq.conf",""); %></textarea>
                                                         </div>
@@ -819,9 +820,21 @@
                                                 <tr id="row_dservers">
                                                     <td colspan="2">
                                                         <a href="javascript:spoiler_toggle('spoiler_dservers')"><span>
-                                                                <#CustomConf#> "dhcp.conf"
+                                                                <#CustomConf#> "dnsmasq.servers"
                                                             </span></a>
                                                         <div id="spoiler_dservers" style="display:none;">
+                                                            <textarea rows="16" wrap="off" spellcheck="false" maxlength="16384" class="span12"
+                                                                name="dnsmasq.dnsmasq.servers"
+                                                                style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("dnsmasq.dnsmasq.servers",""); %></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr id="row_dhcpconf">
+                                                    <td colspan="2">
+                                                        <a href="javascript:spoiler_toggle('spoiler_dhcpconf')"><span>
+                                                                <#CustomConf#> "dhcp.conf"
+                                                            </span></a>
+                                                        <div id="spoiler_dhcpconf" style="display:none;">
                                                             <textarea rows="16" wrap="off" spellcheck="false"
                                                                 maxlength="16384" class="span12"
                                                                 name="dnsmasq.dhcp.conf"
