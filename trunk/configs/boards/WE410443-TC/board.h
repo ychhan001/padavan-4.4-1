@@ -1,4 +1,4 @@
-/* ZTE-E8820S */
+/* WE410443-TC */
 
 #define BOARD_PID		"WE410443-TC"
 #define BOARD_NAME		"WE410443-TC"

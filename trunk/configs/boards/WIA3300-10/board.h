@@ -1,4 +1,4 @@
-/* K2P-USB */
+/* WIA3300-10 */
 
 #define BOARD_PID		"WIA3300-10"
 #define BOARD_NAME		"WIA3300-10"
