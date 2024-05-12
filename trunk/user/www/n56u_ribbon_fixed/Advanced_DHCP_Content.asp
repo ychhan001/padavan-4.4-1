@@ -240,7 +240,7 @@
             }
             if (code == "")
                 code = '<div style="text-align: center;" onclick="hideClients_Block();"><#Nodata#></div>';
-            code += '<!--[if lte IE 6.5]><iframe class="hackiframe2"></iframe><![endif]-->	
+            code += '<!--[if lte IE 6.5]><iframe class="hackiframe2"></iframe><![endif]-->';
             $("ClientList_Block").innerHTML = code;
         }
 
@@ -598,6 +598,17 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
+                                                            onmouseover="openTooltip(this,5,10);">
+                                                            <#LANHostConfig_x_LDNSServer61_itemname#> :</th>
+                                                    <td>
+                                                        <input type="text" maxlength="40" class="input" size="15"
+                                                            name="dhcp_dnsv61_x" value="<% nvram_get_x("", "
+                                                            dhcp_dnsv61_x"); %>" onKeyPress="return
+                                                        is_string(this,event);" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th style="padding-bottom: 0px;"><a class="help_tooltip"
                                                             href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,11);">
@@ -611,12 +622,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row_redirect_all_dns">
-                                                    <th style="border-top: 0 none;"><a class="help_tooltip"
-                                                            href="javascript:void(0);"
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,12);">
                                                             <#LANHostConfig_ForceDNS_itemname#>
                                                         </a></th>
-                                                    <td style="border-top: 0 none;">
+                                                    <td>
                                                         <div class="main_itoggle">
                                                             <div id="redirect_all_dns_on_of">
                                                                 <input type="checkbox" id="redirect_all_dns_fake" <%
@@ -639,12 +649,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row_dhcp_filter_aaaa">
-                                                    <th style="border-top: 0 none;"><a class="help_tooltip"
-                                                            href="javascript:void(0);"
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,13);">
                                                             <#LANHostConfig_DHCPFilterAAAA_itemname#>
                                                         </a></th>
-                                                    <td style="border-top: 0 none;">
+                                                    <td>
                                                         <div class="main_itoggle">
                                                             <div id="dhcp_filter_aaaa_on_of">
                                                                 <input type="checkbox" id="dhcp_filter_aaaa_fake" <%
@@ -667,12 +676,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row_dhcp_all_servers">
-                                                    <th style="border-top: 0 none;"><a class="help_tooltip"
-                                                            href="javascript:void(0);"
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,14);">
                                                             <#LANHostConfig_DHCPAllservers_itemname#>
                                                         </a></th>
-                                                    <td style="border-top: 0 none;">
+                                                    <td>
                                                         <div class="main_itoggle">
                                                             <div id="dhcp_all_servers_on_of">
                                                                 <input type="checkbox" id="dhcp_all_servers_fake" <%
@@ -695,12 +703,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row_dhcp_strict_order">
-                                                    <th style="border-top: 0 none;"><a class="help_tooltip"
-                                                            href="javascript:void(0);"
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,15);">
                                                             <#LANHostConfig_DHCPStrictorder_itemname#>
                                                         </a></th>
-                                                    <td style="border-top: 0 none;">
+                                                    <td>
                                                         <div class="main_itoggle">
                                                             <div id="dhcp_strict_order_on_of">
                                                                 <input type="checkbox" id="dhcp_strict_order_fake" <%
@@ -723,12 +730,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row_dhcp_stop_dns_rebind">
-                                                    <th style="border-top: 0 none;"><a class="help_tooltip"
-                                                            href="javascript:void(0);"
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,16);">
                                                             <#LANHostConfig_DHCPStopDNSRebind_itemname#>
                                                         </a></th>
-                                                    <td style="border-top: 0 none;">
+                                                    <td>
                                                         <div class="main_itoggle">
                                                             <div id="dhcp_stop_dns_rebind_on_of">
                                                                 <input type="checkbox" id="dhcp_stop_dns_rebind_fake" <%
@@ -752,12 +758,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row_dhcp_proxy_dnssec">
-                                                    <th style="border-top: 0 none;"><a class="help_tooltip"
-                                                            href="javascript:void(0);"
+                                                    <th><a class="help_tooltip" href="javascript:void(0);"
                                                             onmouseover="openTooltip(this,5,17);">
                                                             <#LANHostConfig_DHCPProxyDNSSEC_itemname#>
                                                         </a></th>
-                                                    <td style="border-top: 0 none;">
+                                                    <td>
                                                         <div class="main_itoggle">
                                                             <div id="dhcp_proxy_dnssec_on_of">
                                                                 <input type="checkbox" id="dhcp_proxy_dnssec_fake" <%
@@ -780,6 +785,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
+
                                             <table width="100%" align="center" cellpadding="4" cellspacing="0"
                                                 class="table">
                                                 <tr>
@@ -811,7 +817,7 @@
                                                             </span></a>
                                                         <div id="spoiler_conf" style="display:none;">
                                                             <textarea rows="16" wrap="off" spellcheck="false"
-                                                                maxlength="4096" class="span12"
+                                                                maxlength="16384" class="span12"
                                                                 name="dnsmasq.dnsmasq.conf"
                                                                 style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("dnsmasq.dnsmasq.conf",""); %></textarea>
                                                         </div>
@@ -823,7 +829,8 @@
                                                                 <#CustomConf#> "dnsmasq.servers"
                                                             </span></a>
                                                         <div id="spoiler_dservers" style="display:none;">
-                                                            <textarea rows="16" wrap="off" spellcheck="false" maxlength="16384" class="span12"
+                                                            <textarea rows="16" wrap="off" spellcheck="false"
+                                                                maxlength="16384" class="span12"
                                                                 name="dnsmasq.dnsmasq.servers"
                                                                 style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("dnsmasq.dnsmasq.servers",""); %></textarea>
                                                         </div>
@@ -879,7 +886,6 @@
                                                                     ); %>>
                                                             </div>
                                                         </div>
-
                                                         <div style="position: absolute; margin-left: -10000px;">
                                                             <input type="radio" value="1" name="dhcp_static_x"
                                                                 id="dhcp_static_x_1"
@@ -910,7 +916,6 @@
                                                                     ); %>>
                                                             </div>
                                                         </div>
-
                                                         <div style="position: absolute; margin-left: -10000px;">
                                                             <input type="radio" value="1" name="dhcp_static_arp"
                                                                 id="dhcp_static_arp_1"

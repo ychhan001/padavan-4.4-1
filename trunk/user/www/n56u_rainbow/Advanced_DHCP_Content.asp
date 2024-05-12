@@ -631,6 +631,15 @@
 													</td>
 												</tr>
 												<tr>
+													<th><a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,5,10);">
+															<#LANHostConfig_x_LDNSServer61_itemname#> :</th>
+													<td>
+														<input type="text" maxlength="40" class="input" size="15" name="dhcp_dnsv61_x" value="<% nvram_get_x("", "
+															dhcp_dnsv61_x"); %>" onKeyPress="return
+														is_string(this,event);" />
+													</td>
+												</tr>
+												<tr>
 													<th style="padding-bottom: 0px;">
 														<a class="help_tooltip" href="javascript:void(0);"
 															onmouseover="openTooltip(this,5,11);">
@@ -843,17 +852,18 @@
 													</td>
 												</tr>
 												<tr id="row_dservers">
-                                                    <td colspan="2">
-                                                        <a href="javascript:spoiler_toggle('spoiler_dservers')"><span>
-                                                                <#CustomConf#> "dnsmasq.servers"
-                                                            </span></a>
-                                                        <div id="spoiler_dservers" style="display:none;">
-                                                            <textarea rows="16" wrap="off" spellcheck="false" maxlength="16384" class="span12"
-                                                                name="dnsmasq.dnsmasq.servers"
-                                                                style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("dnsmasq.dnsmasq.servers",""); %></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+													<td colspan="2">
+														<a href="javascript:spoiler_toggle('spoiler_dservers')"><span>
+																<#CustomConf#> "dnsmasq.servers"
+															</span></a>
+														<div id="spoiler_dservers" style="display:none;">
+															<textarea rows="16" wrap="off" spellcheck="false"
+																maxlength="16384" class="span12"
+																name="dnsmasq.dnsmasq.servers"
+																style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("dnsmasq.dnsmasq.servers",""); %></textarea>
+														</div>
+													</td>
+												</tr>
 												<tr id="row_dhcpconf">
 													<td colspan="2">
 														<a href="javascript:spoiler_toggle('spoiler_dhcpconf')">
@@ -929,7 +939,9 @@
 													</td>
 												</tr>
 												<tr id="row_static_arp" style="display:none">
-													<th colspan="2" width="50%"><a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,5,19);">
+													<th colspan="2" width="50%"><a class="help_tooltip"
+															href="javascript:void(0);"
+															onmouseover="openTooltip(this,5,19);">
 															<#LANHostConfig_ManualARP_itemname#>
 														</a></th>
 													<td colspan="2">
