@@ -15,7 +15,7 @@ case $ROUTER in
 5K-W20 )
 	LOGO=5k.png
 	;;
-360P2 )
+360P2 | 360-T6M | 360-T6M-PB )
 	LOGO=360.png
 	;;
 A3004NS )
