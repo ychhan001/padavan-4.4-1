@@ -7,7 +7,7 @@
 
 / {
 	compatible = "mediatek,mt7621-soc";
-	model = "CLife-XG1";
+	model = "C-Life-XG1";
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
