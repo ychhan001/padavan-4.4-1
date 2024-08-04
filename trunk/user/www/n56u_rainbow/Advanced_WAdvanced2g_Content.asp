@@ -468,9 +468,11 @@
 													</td>
 												</tr>
 												<tr id="row_ldpc" style="display:none">
-													<th><a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 25);">
+													<th>
+														<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 25);">
 															<#WIFILDPC2_itemname#>
-														</a></th>
+														</a>
+													</th>
 													<td>
 														<select name="rt_ldpc" class="input">
 															<option value="0" <% nvram_match_x( "" , "rt_ldpc" , "0" , "selected" ); %>
@@ -575,7 +577,9 @@
 												</tr>
 												<tr>
 													<th>
-														<#WLANConfig11n_amsdu#>
+														<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 23);">
+															<#WLANConfig11n_amsdu_itemname#>
+														</a>
 													</th>
 													<td>
 														<select name="rt_HT_AMSDU" class="input">

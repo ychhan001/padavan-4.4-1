@@ -399,7 +399,9 @@ function done_validating(action) {
 													</tr>
 													<tr id="row_ldpc" style="display:none">
 														<th>
-															<#WIFILDPC#>
+															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 24);">
+																<#WIFILDPC_itemname#>
+															</a>
 														</th>
 														<td>
 															<select name="wl_ldpc" class="input">
@@ -506,7 +508,9 @@ function done_validating(action) {
 													</tr>
 													<tr>
 														<th>
-															<#WLANConfig11n_amsdu#>
+															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 23);">
+																<#WLANConfig11n_amsdu_itemname#>
+															</a>
 														</th>
 														<td>
 															<select name="wl_HT_AMSDU" class="input">
@@ -652,7 +656,9 @@ function done_validating(action) {
 													</tr>
 													<tr id="row_mumimo" style="display:none">
 														<th>
-															<#WLANConfig11n_mumimo#>
+															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 21);">
+																<#WLANConfig11n_mumimo_itemname#>
+															</a>
 														</th>
 														<td>
 															<select name="wl_mumimo" class="input">
@@ -672,7 +678,9 @@ function done_validating(action) {
 													</tr>
 													<tr id="row_txbf" style="display:none">
 														<th>
-															<#WLANConfig11n_txbf#>
+															<a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this, 3, 22);">
+																<#WLANConfig11n_txbf_itemname#>
+															</a>
 														</th>
 														<td>
 															<select name="wl_txbf" class="input">
