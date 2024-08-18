@@ -1,4 +1,4 @@
-SRC_NAME=iptables-1.8.10
+SRC_NAME=iptables-1.8.7
 
 CFLAGS  += -ffunction-sections -fdata-sections
 LDFLAGS += -Wl,--gc-sections
@@ -6,7 +6,7 @@ LDFLAGS += -Wl,--gc-sections
 THISDIR = $(shell pwd)
 
 all: config_test
-	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
+	$(MAKE) -C $(SRC_NAME)
 
 config_test:
 	( if [ -f ./config_done ]; then \
