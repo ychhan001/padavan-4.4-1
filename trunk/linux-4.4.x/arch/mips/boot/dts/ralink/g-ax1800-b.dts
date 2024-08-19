@@ -7,7 +7,7 @@
 
 / {
 	compatible = "mediatek,mt7621-soc";
-	model = "FCJ G-AX1800";
+	model = "FCJ G-AX1800(Black)";
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
