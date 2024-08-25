@@ -61,7 +61,7 @@ This project is based on original rt-n56u with latest mtk 4.4.198 kernel, which 
 - HAR-20S2U1(from https://github.com/vb1980/padavan-4.4, 没有机器测试，自行判断)
 - SIM-AX1800T(from https://github.com/vb1980/padavan-4.4, 自测可用)
 - G-AX1800(富春江G-AX1800, from https://github.com/ddyjyj/padavan-4.4, 自测可用)
-- G-AX1800-B(富春江G-AX1800黑色版本, 网口配置和白色版不一样，4根天线都是ipex可拆，ttl排针焊接好了，做工比白色版好些， from https://github.com/vb1980/padavan-4.4, 尚未测试)
+- G-AX1800-B(富春江G-AX1800黑色版本, 网口配置和白色版不一样，4根天线都是ipex可拆，ttl排针焊接好了，做工比白色版好些， from https://github.com/vb1980/padavan-4.4, 自测可用)
 - WIA3300-10(西加云杉WIA3300-10，据说和K2P配置差不多，from https://github.com/vb1980/padavan-4.4, 自测可用)
 - JCQ-Q11Pro(from https://github.com/qewwqewq22/padavan11, 没有机器测试，自行判断)
 - R7450(from https://github.com/vipshmily/padavan-4.4, 没有机器测试，自行判断)
