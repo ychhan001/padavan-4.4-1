@@ -7,7 +7,7 @@
 
 / {
 	compatible = "mediatek,mt7621-soc";
-	model = "C-Life-XG1";
+	model = "C-Life XG1";
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
@@ -64,7 +64,7 @@
 
 			partition@0 {
 				label = "Bootloader";
-				reg = <0x00000 0x80000>;
+				reg = <0x0 0x80000>;
 			};
 
 			partition@80000 {
@@ -99,7 +99,7 @@
 
 			partition@600000 {
 				label = "ubi";
-				reg = <0x600000 0xCA00000>;
+				reg = <0x600000 0x7980000>;
 			};
 		};
 	};
