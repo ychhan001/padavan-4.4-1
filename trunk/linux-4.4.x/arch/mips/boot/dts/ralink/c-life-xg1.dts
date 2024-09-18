@@ -45,6 +45,16 @@
 			linux,code = <KEY_WPS_BUTTON>;
 		};
 	};
+	
+	reg_usb_vbus: regulator {
+		compatible = "regulator-fixed";
+		regulator-name = "usb_vbus";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		gpio = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+	};
+
 };
 
 &bch {
@@ -64,42 +74,52 @@
 
 			partition@0 {
 				label = "Bootloader";
-				reg = <0x0 0x80000>;
+				reg = <0x00000 0x80000>; /* 512k */
 			};
 
 			partition@80000 {
-				label = "Nvram";
-				reg = <0x80000 0x40000>;
-			};
-
-			partition@c0000 {
-				label = "Bdata";
-				reg = <0xc0000 0x40000>;
+				label = "CFG_Bdata";
+				reg = <0x80000 0x80000>; /* 512k */
 			};
 
 			partition@100000 {
 				label = "Factory";
-				reg = <0x100000 0x80000>;
+				reg = <0x100000 0x80000>; /* 512k */
+			};
+
+			partition@180000 {
+				label = "Crash";
+				reg = <0x180000 0x80000>; /* 512k */
 			};
 			
-			partition@180000 {
-				label = "crash";
-				reg = <0x180000 0x40000>;
-			};
-
-			partition@1c0000 {
-				label = "crash_log";
-				reg = <0x1c0000 0x40000>;
-			};
-
 			partition@200000 {
-				label = "kernel";
+				label = "kernel_stock";
 				reg = <0x200000 0x400000>;
 			};
-
+			
 			partition@600000 {
-				label = "ubi";
-				reg = <0x600000 0x7980000>;
+				label = "firmware";
+				reg = <0x600000 0x1400000>;
+			};
+
+			partition@1a00000 {
+				label = "Config";
+				reg = <0x1a00000 0x80000>; /* 512K */
+			};
+
+			partition@1a80000 {
+				label = "Storage";
+				reg = <0x1a80000 0x400000>; /* 4096K */
+			};
+
+			partition@1e80000 {
+				label = "RWFS";
+				reg = <0x1e80000 0x6100000>;
+			};
+
+			partition@all {
+				label = "ALL";
+				reg = <0x0 0x7f80000>;
 			};
 		};
 	};
@@ -110,6 +130,7 @@
 };
 
 &xhci {
+	vbus-supply = <&reg_usb_vbus>;
 	status = "okay";
 };
 
