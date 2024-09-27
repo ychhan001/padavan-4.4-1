@@ -67,6 +67,7 @@ This project is based on original rt-n56u with latest mtk 4.4.198 kernel, which 
 - R7450(from https://github.com/vipshmily/padavan-4.4, 没有机器测试，自行判断)
 - 360-T6M(from https://github.com/BINGHUAice/padavan-4.4, 没有机器测试，自定判断)
 - C-Life XG1(刷机简单，使用R3G分区，r3g breed刷入，from https://github.com/vb1980/padavan-4.4, 自测可用)
+- ZTT-RX6000(中天科技RX6000的Wifi6运营商机器，能否刷机未知，from https://github.com/vb1980/padavan-4.4，先云适配)
 # Compilation steps
 
 - Install dependencies
