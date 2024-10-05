@@ -1,5 +1,5 @@
-SRC_NAME=curl-8.9.1
-SRC_URL=https://github.com/curl/curl/releases/download/curl-8_9_1/curl-8.9.1.tar.xz
+SRC_NAME=curl-8.10.1
+SRC_URL=https://github.com/curl/curl/releases/download/curl-8_10_1/curl-8.10.1.tar.xz
 
 LDFLAGS += -Wl,-rpath-link=$(STAGEDIR)/lib
 
