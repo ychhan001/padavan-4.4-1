@@ -18,17 +18,17 @@
 
 		sys_red {
 			label = "power";
-			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
 		};
 
 		sys_green {
-			label = "power";
+			label = "lan";
 			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 		};
 		
 		net_blue {
 			label = "wan";
-			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
