@@ -83,6 +83,19 @@
 			{"zero_route_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
+	struct variable variables_VNTCLI_VNTCLImapp[] = {
+			{"vntcli_mappnet_x", "24", NULL, FALSE},
+			{"vntcli_mappport_x", "24", NULL, FALSE},
+			{"vntcli_mappip_x", "24", NULL, FALSE},
+			{"vntcli_mapeerport_x", "24", NULL, FALSE},
+			{0,0,0,0}
+		};
+	struct variable variables_VNTCLI_VNTCLIroute[] = {
+			{"vntcli_name_x", "24", NULL, FALSE},
+			{"vntcli_route_x", "24", NULL, FALSE},
+			{"vntcli_ip_x", "24", NULL, FALSE},
+			{0,0,0,0}
+		};
 	struct variable variables_SspConf_SspList[] = {
 			{"ssp_type_x", "24", NULL, FALSE},
 			{"ssp_name_x", "24", NULL, FALSE},
@@ -212,7 +225,9 @@
 			{"w_ss", "", NULL, FALSE},
 			{"w_men", "", NULL, FALSE},
 			{"w_adbyby", "", NULL, FALSE},
+			{"w_vntcli", "", NULL, FALSE},
 			{"w_pdnsd", "", NULL, FALSE},
+			{"w_cloudflare", "", NULL, FALSE},
 
 		};
 
@@ -1044,6 +1059,60 @@
 		};
 #endif
 
+#if defined(APP_CLOUDFLARE)
+	struct variable variables_CLOUDFLARE[] = {
+			{"cloudflare_enable", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_interval", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_token", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_Email", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_Key", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_CA_Key", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_host", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_host2", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_host6", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_domian", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_domian2", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"cloudflare_domian6", "", NULL, EVM_RESTART_CLOUDFLARE },
+			{"scripts.ddns_script.sh", "File", NULL, EVM_RESTART_CLOUDFLARE},
+			{0,0,0,0}
+		};
+
+#if defined(APP_VNTCLI)
+	struct variable variables_VNTCLI[] = {
+			{"vntcli_enable", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_token", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_ip", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_localadd", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_serip", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_model", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_key", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_log", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_proxy", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_first", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_wg", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_finger", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_serverw", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_desname", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_id", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_tunname", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_mtu", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_dns", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_stun", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_port", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_punch", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_comp", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_relay", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_wan", "", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_bin", "", NULL, EVM_RESTART_VNTCLI},
+			{"scripts.vnt.conf", "File", NULL, EVM_RESTART_VNTCLI},
+			{"vntcli_routenum_x", "", NULL, EVM_RESTART_VNTCLI},
+			{"VNTCLIroute", "Group", ARGV((char*)variables_VNTCLI_VNTCLIroute, "8", "55", "vntcli_routenum_x"), EVM_RESTART_VNTCLI},
+			{"vntcli_mappnum_x", "", NULL, EVM_RESTART_VNTCLI},
+			{"VNTCLImapp", "Group", ARGV((char*)variables_VNTCLI_VNTCLImapp, "8", "55", "vntcli_mappnum_x"), EVM_RESTART_VNTCLI},
+			{0,0,0,0}
+	};
+#endif
+
 #if defined(APP_SHADOWSOCKS)
 	struct variable variables_ShadowsocksConf[] = {
 			{"ss_enable","",NULL, EVM_RESTART_SHADOWSOCKS},
@@ -1385,6 +1454,12 @@
 #if defined(APP_SHADOWSOCKS)
 		{"ShadowsocksConf",		variables_ShadowsocksConf},
 #endif
+#if defined(APP_VNTCLI)
+		{"VNTCLI",		variables_VNTCLI},
+#endif
+#if defined(APP_CLOUDFLARE)
+		{"CLOUDFLARE",		variables_CLOUDFLARE},
+#endif
 #if defined(APP_FRP)
 		{"FrpConf",		variables_FrpConf},
 #endif
@@ -1504,6 +1579,12 @@
 #endif
 #if defined(APP_SMBD) || defined(APP_NMBD)
 		{EVM_RESTART_NMBD,		EVT_RESTART_NMBD,		RCN_RESTART_NMBD,	0},
+#endif
+#if defined(APP_VNTCLI)
+		{EVM_RESTART_VNTCLI,		EVT_RESTART_VNTCLI,		RCN_RESTART_VNTCLI,	0},
+#endif
+#if defined(APP_CLOUDFLARE)
+		{EVM_RESTART_CLOUDFLARE,		EVT_RESTART_CLOUDFLARE,		RCN_RESTART_CLOUDFLARE,	0},
 #endif
 #if defined(APP_FRP)
 		{EVM_RESTART_FRP,		EVT_RESTART_FRP,		RCN_RESTART_FRP, 	0},
