@@ -605,10 +605,25 @@ void stop_smartdns(void);
 void start_smartdns(void);
 void restart_smartdns(void);
 #endif
+#if defined(APP_CLOUDFLARE)
+void stop_cloudflare(void);
+void start_cloudflare(void);
+void restart_cloudflare(void);
+#endif
 #if defined(APP_FRP)
 void stop_frp(void);
 void start_frp(void);
 void restart_frp(void);
+#endif
+#if defined(APP_VNTS)
+void stop_vnts(void);
+void start_vnts(void);
+void restart_vnts(void);
+#endif
+#if defined(APP_VNTCLI)
+void stop_vntcli(void);
+void start_vntcli(void);
+void restart_vntcli(void);
 #endif
 /* services_ex.c */
 int fill_dnsmasq_servers(void);
