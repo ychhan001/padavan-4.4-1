@@ -423,6 +423,30 @@ struct nvram_pair router_defaults[] = {
 	{ "hdd_spindt", "0" },
 	{ "hdd_apmoff", "0" },
 
+	/*WEB DIY*/
+	{ "w_ai", "1" },
+	{ "w_vpn_s", "1" },
+	{ "w_vpn_c", "1" },
+	{ "w_wnet", "1" },
+	{ "w_sys", "1" },
+	{ "w_usb", "1" },
+	{ "w_net", "1" },
+	{ "w_log", "1" },
+	{ "w_scu", "1" },
+	{ "w_dnsf", "1" },
+	{ "w_ss", "1" },
+	{ "w_men", "1" },
+	{ "w_adbyby", "1" },
+	{ "w_pdnsd", "1" },
+	{ "w_aliddns", "1" },
+	{ "w_frp", "1" },
+	{ "w_caddy", "1" },
+	{ "w_aldriver", "1" },
+	{ "w_vnts", "1" },
+	{ "w_vntcli", "1" },
+	{ "w_alist", "1" },
+	{ "w_cloudflare", "1" }
+
 	{ "ip6_service", "dhcp6" },			/* IPV6 */
 	{ "ip6_wan_if", "0" },
 
@@ -699,6 +723,22 @@ struct nvram_pair router_defaults[] = {
 	{ "dns_server_bind", "0.0.0.0" },
 #endif
 
+#if defined(APP_CLOUDFLARE)
+	/* CF-ddns */
+	{ "cloudflare_enable", "0" },
+	{ "cloudflare_interval", "600" },
+	{ "cloudflare_token", "" },
+	{ "cloudflare_Email", ""  },
+	{ "cloudflare_Key", "" },
+	{ "cloudflare_CA_Key", "" },
+	{ "cloudflare_host", "" },
+	{ "cloudflare_host2", "" },
+	{ "cloudflare_host6", "" },
+	{ "cloudflare_domian", "" },
+	{ "cloudflare_domain2", "" },
+	{ "cloudflare_domain6", "" },
+#endif
+
 #if defined(APP_ALIDDNS)
 	/* Aliddns */
 	{ "aliddns_enable", "0" },
@@ -738,6 +778,54 @@ struct nvram_pair router_defaults[] = {
 	/*frp*/
 	{ "frpc_enable", "0" },
 	{ "frps_enable", "0" },
+#endif
+
+#if defined(APP_VNTS)
+	/*vnts*/
+	{ "vnts_enable", "0" },
+	{ "vnts_port", "" },
+	{ "vnts_token", "" },
+	{ "vnts_subnet", "" },
+	{ "vnts_netmask", "" },
+	{ "vnts_sfinger", "0" },
+	{ "vnts_web_enable", "0" },
+	{ "vnts_web_port", "" },
+	{ "vnts_web_user", "" },
+	{ "vnts_web_pass", "" },
+	{ "vnts_web_wan", "0" },
+	{ "vnts_bin", "" },
+	{ "vnts_log", "0" },
+#endif
+
+#if defined(APP_VNTCLI)
+	/*vntcli*/
+	{ "vntcli_enable", "0" },
+	{ "vntcli_token", "" },
+	{ "vntcli_ip", "" },
+	{ "vntcli_localadd", "" },
+	{ "vntcli_serip", "" },
+	{ "vntcli_model", "0" },
+	{ "vntcli_key", "" },
+	{ "vntcli_log", "0" },
+	{ "vntcli_proxy", "0" },
+	{ "vntcli_first", "0" },
+	{ "vntcli_wg", "0" },
+	{ "vntcli_finger", "0" },
+	{ "vntcli_serverw", "0" },
+	{ "vntcli_desname", "" },
+	{ "vntcli_id", "" },
+	{ "vntcli_tunname", "" },
+	{ "vntcli_mtu", "" },
+	{ "vntcli_dns", "" },
+	{ "vntcli_stun", "" },
+	{ "vntcli_port", "" },
+	{ "vntcli_punch", "0" },
+	{ "vntcli_comp", "0" },
+	{ "vntcli_relay", "0" },
+	{ "vntcli_bin", "" },
+	{ "vntcli_wan", "" },
+	{ "vntcli_routenum_x", "0" },
+	{ "vntcli_mappnum_x", "0" },
 #endif
 
 #if defined(APP_SMARTDNS)
