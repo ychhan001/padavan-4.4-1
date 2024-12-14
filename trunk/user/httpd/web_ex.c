@@ -2347,6 +2347,24 @@ static int frps_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 #endif
 
+#if defined (APP_VNTS)
+static int vnts_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int vnts_status_code = pids("vnts");
+	websWrite(wp, "function vnts_status() { return %d;}\n", vnts_status_code);
+	return 0;
+}
+#endif
+
+#if defined (APP_VNTCLI)
+static int vntcli_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int vntcli_status_code = pids("vnt-cli");
+	websWrite(wp, "function vntcli_status() { return %d;}\n", vntcli_status_code);
+	return 0;
+}
+#endif
+
 static int update_action_hook(int eid, webs_t wp, int argc, char **argv)
 {
 	char *up_action = websGetVar(wp, "connect_action", "");
@@ -2601,6 +2619,21 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_frp = 0;
 #endif
+#if defined(APP_VNTS)
+	int found_app_vnts = 1;
+#else
+	int found_app_vnts = 0;
+#endif
+#if defined(APP_VNTCLI)
+	int found_app_vntcli = 1;
+#else
+	int found_app_vntcli = 0;
+#endif
+#if defined(APP_CLOUDFLARE)
+	int found_app_cloudflare = 1;
+#else
+	int found_app_cloudflare = 0;
+#endif
 #if defined(APP_VPNSVR)
 	int found_app_vpnsvr = 1;
 #else
@@ -2791,6 +2824,9 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_aldriver() { return %d;}\n"
 		"function found_app_aliddns() { return %d;}\n"
 		"function found_app_frp() { return %d;}\n"
+		"function found_app_vnts() { return %d;}\n"
+		"function found_app_vntcli() { return %d;}\n"
+		"function found_app_cloudflare() { return %d;}\n"
 		"function found_app_vpnsvr() { return %d;}\n"
 		"function found_app_vpncli() { return %d;}\n"
 		"function found_app_smartdns() { return %d;}\n"
@@ -2825,6 +2861,9 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_aldriver,
 		found_app_aliddns,
 		found_app_frp,
+		found_app_vnts,
+		found_app_vntcli,
+		found_app_cloudflare,
 		found_app_vpnsvr,
 		found_app_vpncli,
 		found_app_smartdns,
@@ -3549,6 +3588,122 @@ apply_cgi(const char *url, webs_t wp)
 		websRedirect(wp, current_url);
 		return 0;
 	}
+		else if (!strcmp(value, " ClearalistLog "))
+	{
+
+#if defined(APP_ALIST)
+		unlink("/tmp/alist.log");
+#endif
+		websRedirect(wp, current_url);
+		return 0;
+	}
+	else if (!strcmp(value, " AlistReset "))
+	{
+
+#if defined(APP_ALIST)
+		int result = system("/usr/bin/alist.sh admin &");
+		if (result == 0) {
+			websWrite(wp, "{\"sys_result\": 1, \"message\": \"重置成功！\"}");
+		} else {
+			websWrite(wp, "{\"sys_result\": 0, \"message\": \"操作失败！\"}");
+		}	
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " Restartvnts "))
+	{
+#if defined(APP_VNTS)
+		system("/usr/bin/vnts.sh restart &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " Updatevnts "))
+	{
+#if defined(APP_VNTS)
+		system("/usr/bin/vnts.sh update &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " ClearvntsLog "))
+	{
+#if defined(APP_VNTS)
+		unlink("/tmp/vnts.log");
+#endif
+		websRedirect(wp, current_url);
+		return 0;
+	}
+	else if (!strcmp(value, " Restartvntcli "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh restart &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " Updatevntcli "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh update &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDvntinfo "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh vntinfo &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDvntall "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh vntall &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDvntlist "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh vntlist &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDvntroute "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh vntroute &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDvntstatus "))
+	{
+#if defined(APP_VNTCLI)
+		system("/usr/bin/vnt.sh vntstatus &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " ClearvntcliLog "))
+	{
+#if defined(APP_VNTCLI)
+		unlink("/tmp/vnt-cli.log");
+#endif
+		websRedirect(wp, current_url);
+		return 0;
+	}
+	else if (!strcmp(value, " Restartalist "))
+	{
+#if defined(APP_ALIST)
+		system("/usr/bin/alist.sh restart &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " Updatealist "))
+	{
+#if defined(APP_ALIST)
+		system("/usr/bin/alist.sh update &");
+#endif
+		return 0;
+	}
+		
 	else if (!strcmp(value, " Reboot "))
 	{
 		sys_reboot();
@@ -4203,6 +4358,36 @@ static char mentohust_log_txt[] =
 
 #endif
 
+#if defined (APP_VNTCLI)
+static void
+do_vntcli_log_file(const char *url, FILE *stream)
+{
+	dump_file(stream, "/tmp/vnt-cli.log");
+	fputs("\r\n", stream);
+}
+
+static char vntcli_log_txt[] =
+"Content-Disposition: attachment;\r\n"
+"filename=vnt-cli.log"
+;
+
+#endif
+
+#if defined (APP_VNTS)
+static void
+do_vnts_log_file(const char *url, FILE *stream)
+{
+	dump_file(stream, "/tmp/vnts.log");
+	fputs("\r\n", stream);
+}
+
+static char vnts_log_txt[] =
+"Content-Disposition: attachment;\r\n"
+"filename=vnts.log"
+;
+
+#endif
+
 struct mime_handler mime_handlers[] = {
 	/* cached javascript files w/o translations */
 	{ "jquery.js", "text/javascript", NULL, NULL, do_file, 0 }, // 2012.06 Eagle23
@@ -4252,6 +4437,12 @@ struct mime_handler mime_handlers[] = {
 #endif
 #if defined(APP_OPENVPN)
 	{ "client.ovpn", "application/force-download", NULL, NULL, do_export_ovpn_client, 1 },
+#endif
+#if defined(APP_VNTCLI)
+	{ "vnt-cli.log", "application/force-download", vntcli_log_txt, NULL, do_vntcli_log_file, 1 },
+#endif
+#if defined(APP_VNTS)
+	{ "vnts.log", "application/force-download", vnts_log_txt, NULL, do_vnts_log_file, 1 },
 #endif
 #if defined(APP_SHADOWSOCKS)
 	{ "applydb.cgi*", "text/html", no_cache_IE7, do_html_post_and_get, do_applydb_cgi, 1 },
@@ -4578,6 +4769,12 @@ struct ej_handler ej_handlers[] =
 #if defined (APP_FRP)
 	{ "frpc_status", frpc_status_hook},
 	{ "frps_status", frps_status_hook},
+#endif
+#if defined (APP_VNTS)
+	{ "vnts_status", vnts_status_hook},
+#endif
+#if defined (APP_VNTCLI)
+	{ "vntcli_status", vntcli_status_hook},
 #endif
 #if defined (APP_ADBYBY)
 	{ "adbyby_action", adbyby_action_hook},
