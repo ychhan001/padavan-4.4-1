@@ -1229,6 +1229,24 @@ handle_notifications(void)
 			restart_frp();
 		}
 #endif
+#if defined(APP_VNTS)
+		else if (strcmp(entry->d_name, RCN_RESTART_VNTS) == 0)
+		{
+			restart_vnts();
+		}
+#endif
+#if defined(APP_VNTCLI)
+		else if (strcmp(entry->d_name, RCN_RESTART_VNTCLI) == 0)
+		{
+			restart_vntcli();
+		}
+#endif
+#if defined(APP_CLOUDFLARE)
+		else if (strcmp(entry->d_name, RCN_RESTART_CLOUDFLARE) == 0)
+		{
+			restart_cloudflare();
+		}
+#endif
 #if defined(APP_DNSFORWARDER)
 		else if (strcmp(entry->d_name, RCN_RESTART_DNSFORWARDER) == 0)
 		{
