@@ -430,6 +430,15 @@ if (found_app_sqm()){
 if (found_app_frp()){
 	tabtitle[19] = new Array("", "<#menu5_25#>");
 }
+if (found_app_vnts()){
+	tabtitle[25] = new Array("", "VNT服务器");
+}
+if (found_app_vntcli()){
+	tabtitle[26] = new Array("", "VNT客户端");
+}
+if (found_app_cloudflare()){
+	tabtitle[30] = new Array("", "CF域名解析");
+}
 
 //Level 3 Tab title
 
@@ -497,6 +506,18 @@ if (found_app_frp()){
 	tabtitle[9].push('<#menu5_25_1#>');
 	tablink[9].push('Advanced_frp_log.asp');
 }
+if (found_app_vnts()){
+	vnts_array = new Array("","Advanced_vnts.asp");
+	tablink[20] = (vnts_array);
+}
+if (found_app_vntcli()){
+	vntcli_array = new Array("","Advanced_vnt.asp");
+	tablink[21] = (vntcli_array);
+}
+if (found_app_cloudflare()){
+	cloudflare_array = new Array("","Advanced_cloudflare.asp");
+	tablink[22] = (cloudflare_array);
+}
 
 //Level 2 Menu
 menuL2_title = new Array(20)
@@ -539,6 +560,16 @@ if (found_app_sqm()){
 
 if (found_app_frp()){
 	menuL2_title.push("<#menu5_25#>");
+} else menuL2_title.push("");
+if (found_app_vnts()){
+	menuL2_title.push("VNT服务器");
+} else menuL2_title.push("");
+
+if (found_app_vntcli()){
+	menuL2_title.push("VNT客户端");
+} else menuL2_title.push("");
+if (found_app_cloudflare()){
+	menuL2_title.push("CF域名解析");
 } else menuL2_title.push("");
 
 menuL2_link  = new Array("", tablink[0][1], tablink[1][1], tablink[2][1], tablink[3][1], tablink[4][1], tablink[5][1], tablink[6][1], tablink[7][1], support_2g_radio() ? tablink[8][1] : "Main_EStatus_Content.asp", tablink[9][1]);
@@ -588,6 +619,15 @@ if (found_app_sqm()){
 
 if (found_app_frp()){
 	menuL2_link.push(frp_array[1]);
+} else menuL2_link.push("");
+if (found_app_vnts()){
+	menuL2_link.push(vnts_array[1]);
+} else menuL2_link.push("");
+if (found_app_vntcli()){
+	menuL2_link.push(vntcli_array[1]);
+} else menuL2_link.push("");
+if (found_app_cloudflare()){
+	menuL2_link.push(cloudflare_array[1]);
 } else menuL2_link.push("");
 
 //Level 1 Menu in Gateway, Router mode
